@@ -1,0 +1,179 @@
+config firewall addrgrp
+    edit "G Suite"
+        set member "gmail.com" "wildcard.google.com"
+    next
+    edit "Microsoft Office 365"
+        set member "login.microsoftonline.com" "login.microsoft.com" "login.windows.net"
+    next
+    edit "Portal_Whitelist"
+        set member "Brook-Home-ATT" "Sentinel_Albuquerque_NM" "Sentinel_Bellaire_TX" "Sentinel_Caldwell_ID" "Sentinel_Clinton_Co_IN" "Sentinel_Dallas_TX" "Sentinel_Dallas_TX_2" "Sentinel_Elkhart_IN" "Sentinel_HCK_PublicIP" "Sentinel_Lancaster_OH_Fairfield" "Sentinel_Phoenix_AZ" "Sentinel_Riverside_CA" "Sentinel_Seattle_WA" "Sentinel_Tacoma_WA" "Shane_Alternate-68.118.113.230" "Shane-Home-99.74.203.247" "SCG_Ndidi_Ndieli-Field" "Ohio_County" "Sentinel_Greenville_SC"
+    next
+    edit "APN-VPNs"
+        set member "ATT_JASPER_DC1" "ATT_JASPER_DC2" "SPRINT-SJ-CDMA" "SPRINT-SJ-GSM"
+    next
+    edit "ITOPS_ADMINS"
+        set member "HCK-SKOF1" "IT-WS04" "IRV-UGA1" "IT-WS03" "IT-UTIL"
+    next
+    edit "Jenkins_Prod_Targets"
+        set member "prod-ext-app-a1" "prod-ext-app-a2" "PROD-INT-APP-A1" "PROD-INT-APP-A2" "prod-mongo-a1" "prod-mongo-a2" "prod-pgsql-a1" "prod-pgsql-a2" "prod-web-a1" "prod-web-a2" "irv-dna-api1" "irv-dna-api2"
+        set color 19
+    next
+    edit "To-SCG_local"
+        set member "10.0.0.0/8"
+        set allow-routing enable
+    next
+    edit "To-SCG_remote"
+        set member "SCG-10.32.1.0/24"
+        set comment "VPN: To-SCG (Created by VPN wizard)"
+        set allow-routing enable
+    next
+    edit "Jenkins_Dev_Targets"
+        set member "dev-mt-app1" "dev-mt-app2" "dev-mt-api1" "dev-mt-api2"
+    next
+    edit "Jenkins_QA_Targets"
+        set member "qa-mt-app1" "qa-mt-app2" "qa-mt-api1" "qa-mt-api2" "qa-api1"
+    next
+    edit "Domain Controllers"
+        set member "IRV-SNT-DC5" "IRV-SEMS-DC201" "IRV-SNTHQ-DC301"
+    next
+    edit "Mechdyne_local"
+        set member "10.10.70.100/32"
+        set comment "VPN: Mechdyne (Created by VPN wizard)"
+        set allow-routing enable
+    next
+    edit "Mechdyne_remote"
+        set member "Mechdyne_192.168.191.0/24" "Mechdyne_192.168.192.0/24"
+        set comment "VPN: Mechdyne (Created by VPN wizard)"
+        set allow-routing enable
+    next
+    edit "JenkinsAccess"
+        set member "DEV6-EduardoMunoz" "DEV-BKUNDU" "DEV-NMANOCHA-10.100.6.238" "DEV-Phuoc-W10"
+    next
+    edit "IRV-to-SIM_local"
+        set member "10.100.0.0/16" "10.10.20.0/24" "10.140.4.0/22" "Legacy_OpenVPN_10.30.0.0/24" "192.168.1.36/30" "Simon RDP" "WG-ITOps" "10.10.14.0/24" "10.10.177.0/24" "FW-MGMT" "WG-Sales" "WG-Accounting" "10.10.25.0/24" "SNA-10.110.196.0/24" "WG-MCAPPS" "10.0.0.0/8" "OCI-172.31.0.0/16"
+        set allow-routing enable
+    next
+    edit "IRV-to-SIM_remote"
+        set member "10.2.0.0/16" "10.1.0.0/21"
+        set allow-routing enable
+    next
+    edit "On-Prem_JenkinsTargets"
+        set member "PROD-PAR-A1" "irv-dna-mt-app1" "UAT1-10.10.31.101" "IRV-DNA-WEB1-10.100.2.60" "dev-web1.sentinel.hq" "dev-web2.sentinel.hq" "irv-dna-app4" "IRV-DNA-APP1" "IRV-DNA-APP7" "irv-dna-chdb1" "irv-dna-app2" "irv-dna-app3" "irv-fjdem-app8"
+    next
+    edit "HomeInventory"
+        set member "security.patrolsuite.com" "inventory.patrolsuite.com"
+    next
+    edit "DNA-Databases"
+        set member "IRV-DNA-DB4" "DAL-DNA-DB2" "DAL-FJDEM-DB1" "DAL-REDGATE1" "irv-dna-chdb1" "IRV-DNA-DB5" "IRV-DNA-DB6" "IRV-DNA-DB7" "IRV-DNA-DB8" "IRV-DNA-DB9" "IRV-STG-DB1" "IRV-DNA-CHDB2" "IRV-DNA-CHDB3" "VANQUISH" "prod-pgsql-a1" "prod-pgsql-a2" "IRVDOMDB001" "SNT-IRV-SQL03" "IRV-DNA-CHDB4" "DAL-DNA-SSRS1.snt.hq" "irv-dev-pg2" "IRV-DNA-FPDB1" "DAL-DNA-POSTGRES1" "IRV-DNA-ARCHIVE" "hap-1_reports.sentineldna.com" "SENTINEL_FS2" "SENTINEL_IVR" "prod-mongo-a1"
+    next
+    edit "PROD_internal_DNA_Webservers"
+        set member "internal_app.sentineldna.com" "internal_app2.sentineldna.com" "internal_fjdem.sentineldna.com" "internal_monitor.sentineldna.com" "internal_msdoc.sentineldna.com" "internal_oriana.sentineldna.com" "internal_sales.sentineldna.com" "internal_west.sentineldna.com" "internal_devicemgmt.sentineldna.com" "IRV-DNA-WEB1-10.100.2.142" "IRV-DNA-WEB1-10.100.2.60" "irv-dna-web2.sentinel.hq" "irv-dna-api1" "irv-dna-api2" "api.sentineldna.com_internal"
+    next
+    edit "QA_internal_DNA_Webservers"
+        set member "Proxy-qa.sentineldna.com" "internal_qa-devmgmt.sentineldna.com"
+    next
+    edit "DEV_internal_DNA_Webservers"
+        set member "internal_dev-devmgmt.sentineldna.com"
+    next
+    edit "IRV-to-ALD_local"
+        set member "10.100.0.0/16" "10.10.20.0/24"
+        set allow-routing enable
+    next
+    edit "IRV-to-ALD_remote"
+        set member "ALD-LAN-10.6.1.0/24" "ALD-WIFI-10.6.2.0/24"
+        set comment "VPN: IRV-to-ALD (Created by VPN wizard)"
+        set allow-routing enable
+    next
+    edit "WG-DNA-SQL"
+        set member "WG-PriyaJ" "WG-AlanZhou" "WG-QuynhTran" "WG-SrideviPatri" "WG-SaurabhBatra" "WG-KumarSabnis" "WG-PankajSrivastava" "WG-YogiRajala" "WG-ChamikaraNawarathne" "WG-SoftDev-Brook"
+    next
+    edit "WG-DNA-FullAccess"
+        set member "WG-KumarSabnis" "WG-PankajSrivastava" "WG-SaurabhBatra" "WG-YogiRajala" "DEV-Phuoc-W10" "SUBIN-M92" "WG-PhuocTran" "WG-SathishNagarajan" "WG-DaveHan" "WG-JimKillian" "WG_TomHuguenard" "WG-SubinAntony" "WG-BhaghirathiKundu" "KamalJohsi"
+    next
+    edit "DNA-Apps"
+        set member "dev-mt-app1" "dev-mt-app2" "dev-web1.sentinel.hq" "dev-web2.sentinel.hq" "IRV-DNA-APP1" "irv-dna-app2" "irv-dna-app3" "irv-dna-app4" "IRV-DNA-APP7" "irv-dna-mt-app1" "IRV-DNA-WEB1-10.100.2.60" "irv-dna-web2.sentinel.hq" "irv-fjdem-app8" "prod-ext-app-a1" "prod-ext-app-a2" "PROD-INT-APP-A1" "PROD-INT-APP-A2" "prod-web-a1" "prod-web-a2" "qa-mt-app1" "qa-mt-app2" "irv-njs1" "irv-njs2" "IRV-DNA-REDIS1" "IRV-DNA-WEB1-10.100.2.142" "irv-dna-app9" "PROD-PAR-A1" "PROD-PAR-A2" "prod-api-b1" "prod-api-b2" "IRV-BILLING2" "api.sentineldna.com_internal" "irv-dna-api1" "irv-dna-api2" "qa-api1" "IRV-DNA-BART1" "IRV-DNA-LLCH1" "IRV-DNA-LLCH2"
+    next
+    edit "iLAND-DAL_local"
+        set member "10.10.14.0/24"
+        set allow-routing enable
+    next
+    edit "iLAND-DAL_remote"
+        set member "iLAND_Zerto_172.16.12.0/24"
+        set comment "VPN: iLAND-DAL (Created by VPN wizard)"
+        set allow-routing enable
+    next
+    edit "DNA-Main-Databases"
+        set member "IRV-DNA-DB4" "IRV-DNA-DB5" "IRV-DNA-DB6" "IRV-DNA-DB7" "IRV-DNA-DB8" "IRV-DNA-DB9" "DAL-DNA-DB2" "VANQUISH" "IRVDOMDB001" "DAL-FJDEM-DB1"
+    next
+    edit "DNA-Dev-DB"
+        set member "IRV-STG-DB1"
+    next
+    edit "OCI-D-PD-VCNs"
+        set member "OCI-VCN-ldnadbpd" "OCI-VCN-ldnadbsspd" "OCI-VCN-ldnasspd" "OCI-VCN-ldnasyspd"
+        set color 1
+        set allow-routing enable
+    next
+    edit "DNA-SQL-EXT-WEB"
+        set member "DAL-DNA-DB2" "IRV-DNA-CHDB2" "IRV-DNA-DB4" "IRV-DNA-DB5" "IRV-DNA-DB6" "IRV-DNA-DB7" "IRV-DNA-DB8" "IRV-DNA-DB9" "IRV-STG-DB1" "IRVDOMDB001" "VANQUISH" "IRV-DNA-CHDB4"
+    next
+    edit "DNA-SQL-INT-API"
+        set member "DAL-DNA-DB2" "IRV-DNA-DB4" "IRV-DNA-DB5" "IRV-DNA-DB6" "IRV-DNA-DB7" "IRV-DNA-DB8" "IRV-DNA-DB9" "IRV-STG-DB1" "DAL-FJDEM-DB1"
+    next
+    edit "OCI-D-DR-VCNs"
+        set member "OCI-VCN-ldnadbdr" "OCI-VCN-ldnadbssdr" "OCI-VCN-ldnassdr" "OCI-VCN-ldnasysdr"
+        set allow-routing enable
+    next
+    edit "OCI-PHX-DR-B1_remote"
+        set member "OCI-PHX-DR-B1_remote_subnet_1"
+        set comment "VPN: OCI-PHX-DR-B1 (Created by VPN wizard)"
+        set allow-routing enable
+    next
+    edit "DNA-to-OCI-SQL"
+        set member "DAL-DNA-DB2" "IRV-DNA-APP1" "IRV-DNA-APP7" "IRV-DNA-BART1" "IRV-DNA-WEB1-10.100.2.142" "IRV-DNA-WEB1-10.100.2.60" "IRVDOMDB001" "PROD-INT-APP-A1" "PROD-INT-APP-A2" "PROD-PAR-A1" "PROD-PAR-A2" "VANQUISH" "irv-dna-api1" "irv-dna-api2"
+    next
+    edit "SEMS-DomainControllers"
+        set member "IRV-SEMS-DC3" "IRV-SEMS-DC1" "IRV-SEMS-DC2" "IRV-SEMS-DC201"
+    next
+    edit "SharePoint-Access"
+        set member "Brook-Home-ATT" "Sentinel_Albuquerque_NM" "Sentinel_Bellaire_TX" "Sentinel_Caldwell_ID" "Sentinel_Clinton_Co_IN" "Sentinel_Dallas_TX" "Sentinel_Dallas_TX_2" "Sentinel_Elkhart_IN" "Sentinel_Greenville_SC" "Sentinel_HCK_PublicIP" "Sentinel_Phoenix_AZ" "Sentinel_Riverside_CA" "Sentinel_Seattle_WA" "Sentinel_Tacoma_WA" "Sentinel_Tippecanoe_IN" "Shane-Home-99.74.203.247" "Shane_Alternate-68.118.113.230"
+    next
+    edit "ScottsdaleFTP-Access"
+        set member "Brook-Home-ATT" "Hancock-ATT" "Scottsdale_162.253.207.254" "Scottsdale_192.206.21.8"
+    next
+    edit "external-console-access"
+        set member "Brook-Home-ATT" "Shane-Home-99.74.203.247" "Shane_Alternate-68.118.113.230" "Hancock-ATT" "Simon-ATT"
+    next
+    edit "HOU_Remote"
+        set member "HOU_192.168.150.0/24"
+        set allow-routing enable
+    next
+    edit "IRV_Local"
+        set member "WG-ITOps" "10.10.20.0/24" "10.100.0.0/16"
+        set allow-routing enable
+    next
+    edit "HOL_local"
+        set member "WG-ITOps"
+        set allow-routing enable
+    next
+    edit "HOL_remote"
+        set member "HOL_VLAN-100" "HOL_WiFi"
+        set allow-routing enable
+    next
+    edit "TAR_local"
+        set member "WG-ITOps"
+        set allow-routing enable
+    next
+    edit "TAR_remote"
+        set member "TarrantCountyLAN"
+        set comment "VPN: TAR (Created by VPN wizard)"
+        set allow-routing enable
+    next
+    edit "NORCO_local"
+        set member "10.10.20.0/24" "10.100.0.0/16" "10.140.4.0/22" "192.168.1.36/30" "WG-ITOps"
+        set allow-routing enable
+    next
+    edit "NORCO_remote"
+        set member "NORCO-10.3.0.0/16"
+        set allow-routing enable
+    next
+end

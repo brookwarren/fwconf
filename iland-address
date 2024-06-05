@@ -1,0 +1,1084 @@
+config firewall address
+    edit "none"
+        set subnet 0.0.0.0 255.255.255.255
+    next
+    edit "login.microsoftonline.com"
+        set type fqdn
+        set fqdn "login.microsoftonline.com"
+    next
+    edit "login.microsoft.com"
+        set type fqdn
+        set fqdn "login.microsoft.com"
+    next
+    edit "login.windows.net"
+        set type fqdn
+        set fqdn "login.windows.net"
+    next
+    edit "gmail.com"
+        set type fqdn
+        set fqdn "gmail.com"
+    next
+    edit "wildcard.google.com"
+        set type fqdn
+        set fqdn "*.google.com"
+    next
+    edit "wildcard.dropbox.com"
+        set type fqdn
+        set fqdn "*.dropbox.com"
+    next
+    edit "SSLVPN_TUNNEL_ADDR1"
+        set type iprange
+        set start-ip 10.212.134.200
+        set end-ip 10.212.134.210
+    next
+    edit "all"
+    next
+    edit "FIREWALL_AUTH_PORTAL_ADDRESS"
+    next
+    edit "FABRIC_DEVICE"
+        set comment "IPv4 addresses of Fabric Devices."
+    next
+    edit "FCTEMS_ALL_FORTICLOUD_SERVERS"
+        set type dynamic
+        set sub-type ems-tag
+    next
+    edit "Brook-Home-ATT"
+        set subnet 75.33.177.82 255.255.255.255
+    next
+    edit "VLAN-14 address"
+        set type interface-subnet
+        set subnet 10.10.14.254 255.255.255.0
+        set interface "VLAN-14"
+    next
+    edit "Sentinel_Albuquerque_NM"
+        set subnet 216.253.200.78 255.255.255.255
+    next
+    edit "Sentinel_Bellaire_TX"
+        set subnet 24.221.220.5 255.255.255.255
+    next
+    edit "Sentinel_Caldwell_ID"
+        set subnet 71.39.213.126 255.255.255.255
+    next
+    edit "Sentinel_Clinton_Co_IN"
+        set subnet 96.69.243.38 255.255.255.255
+    next
+    edit "Sentinel_Dallas_TX"
+        set subnet 76.227.27.16 255.255.255.255
+    next
+    edit "Sentinel_Dallas_TX_2"
+        set subnet 99.38.215.38 255.255.255.255
+    next
+    edit "Sentinel_Elkhart_IN"
+        set subnet 64.179.104.40 255.255.255.248
+    next
+    edit "Sentinel_Greenville_SC"
+        set subnet 68.115.213.123 255.255.255.255
+    next
+    edit "Sentinel_HCK_PublicIP"
+        set subnet 45.18.21.149 255.255.255.255
+    next
+    edit "Sentinel_Lancaster_OH_Fairfield"
+        set subnet 8.21.104.228 255.255.255.255
+    next
+    edit "Sentinel_Phoenix_AZ"
+        set subnet 70.167.216.56 255.255.255.255
+    next
+    edit "Sentinel_Riverside_CA"
+        set subnet 47.51.24.74 255.255.255.255
+    next
+    edit "Sentinel_Seattle_WA"
+        set subnet 63.226.206.246 255.255.255.255
+    next
+    edit "Sentinel_Tacoma_WA"
+        set subnet 207.108.218.44 255.255.255.255
+    next
+    edit "Sentinel_Tippecanoe_IN"
+        set subnet 173.15.115.8 255.255.255.248
+    next
+    edit "Shane_Alternate-68.118.113.230"
+        set subnet 68.118.113.230 255.255.255.255
+    next
+    edit "USA"
+        set type geography
+        set country "US"
+    next
+    edit "ATT_JASPER_DC1"
+        set subnet 208.184.161.72 255.255.255.255
+    next
+    edit "ATT_JASPER_DC2"
+        set subnet 208.184.162.72 255.255.255.255
+    next
+    edit "SPRINT-SJ-GSM"
+        set subnet 8.39.129.101 255.255.255.255
+    next
+    edit "SPRINT-SJ-CDMA"
+        set subnet 208.83.163.4 255.255.255.255
+    next
+    edit "IRV-ZABBIX"
+        set subnet 10.100.0.5 255.255.255.255
+    next
+    edit "Scottsdale_192.206.21.8"
+        set subnet 192.206.21.8 255.255.255.255
+    next
+    edit "ISOLATION-266 address"
+        set type interface-subnet
+        set subnet 10.254.254.1 255.255.255.0
+        set interface "ISOLATION-266"
+    next
+    edit "HCK-SKOF1"
+        set color 2
+        set subnet 10.1.5.50 255.255.255.255
+    next
+    edit "Hancock-ATT"
+        set color 1
+        set subnet 45.18.21.144 255.255.255.248
+    next
+    edit "Portal"
+        set subnet 10.100.9.11 255.255.255.255
+    next
+    edit "10.0.0.0/8"
+        set allow-routing enable
+        set subnet 10.0.0.0 255.0.0.0
+    next
+    edit "PHX-192.168.149.0"
+        set subnet 192.168.149.0 255.255.255.0
+    next
+    edit "IT-WS04"
+        set subnet 10.1.5.100 255.255.255.255
+    next
+    edit "IRV-UGA1"
+        set subnet 10.100.6.24 255.255.255.255
+    next
+    edit "IRV-SNT-DC5"
+        set subnet 10.100.2.5 255.255.255.255
+    next
+    edit "DNA-Cloud_172.30/16"
+        set color 11
+        set allow-routing enable
+        set subnet 172.30.0.0 255.255.0.0
+    next
+    edit "git01"
+        set subnet 10.10.20.28 255.255.255.255
+    next
+    edit "DEV8"
+        set subnet 10.100.6.248 255.255.255.255
+    next
+    edit "HOU_192.168.150.0/24"
+        set allow-routing enable
+        set subnet 192.168.150.0 255.255.255.0
+    next
+    edit "AWS_Jenkins"
+        set allow-routing enable
+        set subnet 172.30.1.231 255.255.255.255
+    next
+    edit "SUBIN-M92"
+        set color 21
+        set subnet 10.3.1.124 255.255.255.255
+    next
+    edit "AWS_Jenkins_Network"
+        set color 11
+        set allow-routing enable
+        set subnet 172.30.1.0 255.255.255.0
+    next
+    edit "prod-ext-app-a1"
+        set color 19
+        set subnet 10.100.6.117 255.255.255.255
+    next
+    edit "prod-ext-app-a2"
+        set color 19
+        set subnet 10.100.6.118 255.255.255.255
+    next
+    edit "QA1-Privatesubnet-2b"
+        set color 11
+        set subnet 172.30.4.0 255.255.255.0
+    next
+    edit "QA1-Privatesubnet-2c"
+        set color 11
+        set subnet 172.30.5.0 255.255.255.0
+    next
+    edit "IRV-STG-DB1"
+        set subnet 10.100.6.96 255.255.255.255
+    next
+    edit "SCG-10.32.1.0/24"
+        set allow-routing enable
+        set subnet 10.32.1.0 255.255.255.0
+    next
+    edit "Scottsdale_162.253.207.254"
+        set subnet 162.253.207.254 255.255.255.255
+    next
+    edit "PROD-INT-APP-A1"
+        set subnet 10.100.6.119 255.255.255.255
+    next
+    edit "PROD-INT-APP-A2"
+        set subnet 10.100.6.120 255.255.255.255
+    next
+    edit "prod-web-a1"
+        set subnet 10.100.6.127 255.255.255.255
+    next
+    edit "prod-web-a2"
+        set subnet 10.100.6.128 255.255.255.255
+    next
+    edit "prod-mongo-a1"
+        set subnet 10.100.6.129 255.255.255.255
+    next
+    edit "prod-mongo-a2"
+        set subnet 10.100.6.130 255.255.255.255
+    next
+    edit "prod-pgsql-a1"
+        set subnet 10.100.6.131 255.255.255.255
+    next
+    edit "prod-pgsql-a2"
+        set subnet 10.100.6.132 255.255.255.255
+    next
+    edit "dev-mt-app1"
+        set subnet 10.10.30.25 255.255.255.255
+    next
+    edit "dev-mt-app2"
+        set subnet 10.10.30.26 255.255.255.255
+    next
+    edit "qa-mt-app1"
+        set subnet 10.10.31.25 255.255.255.255
+    next
+    edit "qa-mt-app2"
+        set subnet 10.10.31.26 255.255.255.255
+    next
+    edit "JOHNG-DT"
+        set subnet 10.3.1.127 255.255.255.255
+    next
+    edit "Management-70 address"
+        set type interface-subnet
+        set subnet 10.10.70.1 255.255.255.0
+        set interface "Management-70"
+    next
+    edit "IRV-SEMS-DC3"
+        set subnet 10.10.20.5 255.255.255.255
+    next
+    edit "IRV-SNT-RDS1"
+        set allow-routing enable
+        set subnet 10.10.70.100 255.255.255.255
+    next
+    edit "IT-WS03"
+        set subnet 10.1.5.101 255.255.255.255
+    next
+    edit "dev-mt-api1"
+        set subnet 10.10.30.23 255.255.255.255
+    next
+    edit "dev-mt-api2"
+        set subnet 10.10.30.24 255.255.255.255
+    next
+    edit "qa-mt-api1"
+        set subnet 10.10.31.23 255.255.255.255
+    next
+    edit "qa-mt-api2"
+        set subnet 10.10.31.24 255.255.255.255
+    next
+    edit "irv-dna-api1"
+        set subnet 10.100.6.110 255.255.255.255
+    next
+    edit "irv-dna-api2"
+        set subnet 10.100.6.111 255.255.255.255
+    next
+    edit "qa-api1"
+        set subnet 10.10.31.31 255.255.255.255
+    next
+    edit "QA-DNA-Website"
+        set color 11
+        set subnet 172.30.4.154 255.255.255.255
+    next
+    edit "DEV4-Frank-10.100.6.253"
+        set subnet 10.100.6.253 255.255.255.255
+    next
+    edit "10.10.70.100/32"
+        set allow-routing enable
+        set subnet 10.10.70.100 255.255.255.255
+    next
+    edit "Mechdyne_192.168.191.0/24"
+        set allow-routing enable
+        set subnet 192.168.191.0 255.255.255.0
+    next
+    edit "Mechdyne_192.168.192.0/24"
+        set allow-routing enable
+        set subnet 192.168.192.0 255.255.255.0
+    next
+    edit "DEV6-EduardoMunoz"
+        set subnet 10.100.6.254 255.255.255.255
+    next
+    edit "Shane-Home-99.74.203.247"
+        set subnet 99.74.203.247 255.255.255.255
+    next
+    edit "10.100.0.0/16"
+        set allow-routing enable
+        set subnet 10.100.0.0 255.255.0.0
+    next
+    edit "10.10.20.0/24"
+        set allow-routing enable
+        set subnet 10.10.20.0 255.255.255.0
+    next
+    edit "10.140.4.0/22"
+        set allow-routing enable
+        set subnet 10.140.4.0 255.255.252.0
+    next
+    edit "10.1.0.0/21"
+        set allow-routing enable
+        set subnet 10.1.0.0 255.255.248.0
+    next
+    edit "10.2.0.0/16"
+        set allow-routing enable
+        set subnet 10.2.0.0 255.255.0.0
+    next
+    edit "Legacy_OpenVPN_10.30.0.0/24"
+        set allow-routing enable
+        set subnet 10.30.0.0 255.255.255.0
+    next
+    edit "192.168.1.36/30"
+        set allow-routing enable
+        set subnet 192.168.1.36 255.255.255.252
+    next
+    edit "Simon RDP"
+        set allow-routing enable
+        set subnet 172.18.4.0 255.255.255.0
+    next
+    edit "10.10.0.0/16"
+        set allow-routing enable
+        set subnet 10.10.0.0 255.255.0.0
+    next
+    edit "192.168.0.0/16"
+        set allow-routing enable
+        set subnet 192.168.0.0 255.255.0.0
+    next
+    edit "PROD-PAR-A1"
+        set subnet 10.100.6.125 255.255.255.255
+    next
+    edit "irv-dna-mt-app1"
+        set subnet 10.100.6.79 255.255.255.255
+    next
+    edit "IT-UTIL"
+        set subnet 10.10.20.16 255.255.255.255
+    next
+    edit "A.MX"
+        set subnet 10.10.20.32 255.255.255.255
+    next
+    edit "NORCO-10.3.0.0/16"
+        set allow-routing enable
+        set subnet 10.3.0.0 255.255.0.0
+    next
+    edit "UAT1-10.10.31.101"
+        set subnet 10.10.31.101 255.255.255.255
+    next
+    edit "IRV-DNA-WEB1-10.100.2.60"
+        set subnet 10.100.2.60 255.255.255.255
+    next
+    edit "dev-web1.sentinel.hq"
+        set subnet 10.10.30.21 255.255.255.255
+    next
+    edit "dev-web2.sentinel.hq"
+        set subnet 10.10.30.22 255.255.255.255
+    next
+    edit "irv-dna-app4"
+        set subnet 10.100.2.66 255.255.255.255
+    next
+    edit "DEV-NMANOCHA-10.100.6.238"
+        set subnet 10.100.6.238 255.255.255.255
+    next
+    edit "DEV-BKUNDU"
+        set subnet 10.100.6.239 255.255.255.255
+    next
+    edit "DEV-Phuoc-W10"
+        set subnet 10.3.1.29 255.255.255.255
+    next
+    edit "IRV-DNA-APP7"
+        set subnet 10.100.6.38 255.255.255.255
+    next
+    edit "IRV-DNA-APP1"
+        set subnet 10.100.2.59 255.255.255.255
+    next
+    edit "irv-dna-chdb1"
+        set subnet 10.140.4.21 255.255.255.255
+    next
+    edit "Inside-VPN-177 address"
+        set type interface-subnet
+        set subnet 10.10.177.1 255.255.255.0
+        set interface "Inside-VPN-177"
+    next
+    edit "Outside-VPN-176 address"
+        set type interface-subnet
+        set subnet 10.10.176.1 255.255.255.0
+        set interface "Outside-VPN-176"
+    next
+    edit "10.10.177.0/24"
+        set allow-routing enable
+        set subnet 10.10.177.0 255.255.255.0
+    next
+    edit "WG-ITOps"
+        set allow-routing enable
+        set subnet 172.18.20.0 255.255.255.0
+    next
+    edit "WG-SoftDev"
+        set allow-routing enable
+        set subnet 172.18.21.0 255.255.255.0
+    next
+    edit "Dev-10.10.30.0/24"
+        set allow-routing enable
+        set subnet 10.10.30.0 255.255.255.0
+    next
+    edit "QA-10.10.31.0/24"
+        set allow-routing enable
+        set subnet 10.10.31.0 255.255.255.0
+    next
+    edit "irv-dna-app2"
+        set subnet 10.100.2.63 255.255.255.255
+    next
+    edit "irv-dna-app3"
+        set subnet 10.100.2.65 255.255.255.255
+    next
+    edit "irv-fjdem-app8"
+        set subnet 10.100.6.27 255.255.255.255
+    next
+    edit "WG-Accounting"
+        set allow-routing enable
+        set subnet 172.18.22.0 255.255.255.0
+    next
+    edit "WG-PhilipKaldas"
+        set subnet 172.18.22.7 255.255.255.255
+    next
+    edit "HCK-FIN-DT05-Philip-10.1.1.11"
+        set subnet 10.1.1.11 255.255.255.255
+    next
+    edit "DAL-FILE1"
+        set subnet 10.140.4.19 255.255.255.255
+    next
+    edit "COXWINAPP002-10.1.1.6"
+        set subnet 10.1.1.6 255.255.255.255
+    next
+    edit "WG-DaveHan"
+        set subnet 172.18.21.20 255.255.255.255
+    next
+    edit "WG-Sales"
+        set allow-routing enable
+        set subnet 172.18.23.0 255.255.255.0
+    next
+    edit "WG-MCAPPS-172.18.25.0"
+        set subnet 172.18.25.0 255.255.255.0
+    next
+    edit "security.patrolsuite.com"
+        set subnet 10.10.20.192 255.255.255.255
+    next
+    edit "inventory.patrolsuite.com"
+        set subnet 10.10.20.191 255.255.255.255
+    next
+    edit "WG-SaurabhBatra"
+        set subnet 172.18.21.10 255.255.255.255
+    next
+    edit "WG-DineshGopagani"
+        set subnet 172.18.21.24 255.255.255.255
+    next
+    edit "WG-JohnCamp"
+        set subnet 172.18.21.27 255.255.255.255
+    next
+    edit "IRV-DNA-DB4"
+        set subnet 10.100.6.133 255.255.255.255
+    next
+    edit "IRV-DNA-DB5"
+        set subnet 10.100.6.134 255.255.255.255
+    next
+    edit "IRV-DNA-DB6"
+        set subnet 10.100.6.135 255.255.255.255
+    next
+    edit "IRV-DNA-DB7"
+        set subnet 10.100.6.136 255.255.255.255
+    next
+    edit "IRV-DNA-DB8"
+        set subnet 10.100.6.137 255.255.255.255
+    next
+    edit "IRV-DNA-DB9"
+        set subnet 10.100.6.138 255.255.255.255
+    next
+    edit "DAL-DNA-DB2"
+        set subnet 10.140.4.24 255.255.255.255
+    next
+    edit "DAL-FJDEM-DB1"
+        set subnet 10.140.4.25 255.255.255.255
+    next
+    edit "DAL-REDGATE1"
+        set subnet 10.140.4.49 255.255.255.255
+    next
+    edit "IRV-DNA-CHDB3"
+        set subnet 10.100.2.84 255.255.255.255
+    next
+    edit "IRV-DNA-CHDB2"
+        set subnet 10.140.4.22 255.255.255.255
+    next
+    edit "VANQUISH"
+        set subnet 192.168.1.38 255.255.255.255
+    next
+    edit "Proxy-qa.sentineldna.com"
+        set subnet 10.10.20.131 255.255.255.255
+    next
+    edit "internal_monitor.sentineldna.com"
+        set subnet 10.10.20.137 255.255.255.255
+    next
+    edit "internal_app2.sentineldna.com"
+        set subnet 10.10.20.149 255.255.255.255
+    next
+    edit "internal_west.sentineldna.com"
+        set subnet 10.10.20.150 255.255.255.255
+    next
+    edit "internal_oriana.sentineldna.com"
+        set subnet 10.10.20.147 255.255.255.255
+    next
+    edit "internal_app.sentineldna.com"
+        set subnet 10.10.20.132 255.255.255.255
+    next
+    edit "internal_msdoc.sentineldna.com"
+        set subnet 10.10.20.169 255.255.255.255
+    next
+    edit "internal_fjdem.sentineldna.com"
+        set subnet 10.10.20.123 255.255.255.255
+    next
+    edit "internal_sales.sentineldna.com"
+        set subnet 10.10.20.171 255.255.255.255
+    next
+    edit "internal_qa-devmgmt.sentineldna.com"
+        set subnet 10.100.7.34 255.255.255.255
+    next
+    edit "internal_devicemgmt.sentineldna.com"
+        set subnet 10.10.20.40 255.255.255.255
+    next
+    edit "internal_dev-devmgmt.sentineldna.com"
+        set subnet 10.100.7.33 255.255.255.255
+    next
+    edit "10.10.14.0/24"
+        set allow-routing enable
+        set subnet 10.10.14.0 255.255.255.0
+    next
+    edit "ALD-LAN-10.6.1.0/24"
+        set allow-routing enable
+        set subnet 10.6.1.0 255.255.255.0
+    next
+    edit "ALD-WIFI-10.6.2.0/24"
+        set allow-routing enable
+        set subnet 10.6.2.0 255.255.255.0
+    next
+    edit "IRV-FILE1"
+        set subnet 10.100.6.6 255.255.255.255
+    next
+    edit "WG-PriyaJ"
+        set subnet 172.18.21.29 255.255.255.255
+    next
+    edit "WG-AlanZhou"
+        set subnet 172.18.21.30 255.255.255.255
+    next
+    edit "WG-SrideviPatri"
+        set subnet 172.18.21.31 255.255.255.255
+    next
+    edit "WG-QuynhTran"
+        set subnet 172.18.21.32 255.255.255.255
+    next
+    edit "WG-KumarSabnis"
+        set subnet 172.18.21.33 255.255.255.255
+    next
+    edit "WG-PankajSrivastava"
+        set subnet 172.18.21.34 255.255.255.255
+    next
+    edit "WG-YogiRajala"
+        set subnet 172.18.21.35 255.255.255.255
+    next
+    edit "irv-dna-web2.sentinel.hq"
+        set subnet 10.100.2.70 255.255.255.255
+    next
+    edit "irv-njs1"
+        set subnet 10.100.6.209 255.255.255.255
+    next
+    edit "irv-njs2"
+        set subnet 10.100.6.210 255.255.255.255
+    next
+    edit "vault1"
+        set subnet 10.100.6.20 255.255.255.255
+    next
+    edit "vault2"
+        set subnet 10.100.6.21 255.255.255.255
+    next
+    edit "OVPN_Ladera_SENTINEL"
+        set allow-routing enable
+        set subnet 172.17.3.0 255.255.255.0
+    next
+    edit "OVPN_Ladera_SEMS"
+        set allow-routing enable
+        set subnet 172.17.5.0 255.255.255.0
+    next
+    edit "10.10.113.0/29"
+        set allow-routing enable
+        set subnet 10.10.113.0 255.255.255.248
+    next
+    edit "iLAND_Zerto_172.16.12.0/24"
+        set allow-routing enable
+        set subnet 172.16.12.0 255.255.255.0
+    next
+    edit "B.MX"
+        set subnet 10.10.20.10 255.255.255.255
+    next
+    edit "SCG_Ndidi_Ndieli-Field"
+        set subnet 159.235.23.11 255.255.255.255
+    next
+    edit "OCI-DNA-DEV"
+        set allow-routing enable
+        set subnet 172.27.112.0 255.255.255.0
+    next
+    edit "IRVDOMDB001"
+        set subnet 10.10.20.77 255.255.255.255
+    next
+    edit "OCI_dnaqawinweb01"
+        set subnet 172.27.112.243 255.255.255.255
+    next
+    edit "DAL-DNA-SSRS1.snt.hq"
+        set subnet 10.140.4.33 255.255.255.255
+    next
+    edit "OCI_dnaqawebapp3"
+        set subnet 172.27.112.173 255.255.255.255
+    next
+    edit "OCI_dnaqawebapp4"
+        set subnet 172.27.112.190 255.255.255.255
+    next
+    edit "IRV-DNA-BART1"
+        set subnet 10.100.6.88 255.255.255.255
+    next
+    edit "WG-ChamikaraNawarathne"
+        set subnet 172.18.21.64 255.255.255.255
+    next
+    edit "OCI_fppdnat1"
+        set subnet 139.87.74.31 255.255.255.255
+    next
+    edit "WG-SoftDev-Brook"
+        set subnet 172.18.21.161 255.255.255.255
+    next
+    edit "OCI-VCN-ldnadbpd"
+        set color 7
+        set allow-routing enable
+        set subnet 172.27.10.0 255.255.255.0
+    next
+    edit "OCI-VCN-ldnadbsspd"
+        set color 7
+        set allow-routing enable
+        set subnet 172.27.11.0 255.255.255.0
+    next
+    edit "OCI-VCN-ldnasyspd"
+        set color 7
+        set allow-routing enable
+        set subnet 172.27.20.0 255.255.255.0
+    next
+    edit "OCI-VCN-ldnasspd"
+        set color 7
+        set allow-routing enable
+        set subnet 172.27.21.0 255.255.255.0
+    next
+    edit "OCI-d-pd-ext-web01"
+        set subnet 172.27.20.92 255.255.255.255
+    next
+    edit "OCI-d-pd-ext-api01"
+        set subnet 172.27.20.37 255.255.255.255
+    next
+    edit "OCI-d-pd-int-fp01"
+        set subnet 172.27.20.28 255.255.255.255
+    next
+    edit "OCI-d-pd-int-dna01"
+        set subnet 172.27.20.22 255.255.255.255
+    next
+    edit "OCI-d-pd-int-rsdb01"
+        set subnet 172.27.10.80 255.255.255.255
+    next
+    edit "SNT-IRV-SQL03"
+        set subnet 10.100.2.3 255.255.255.255
+    next
+    edit "Ohio_County"
+        set subnet 12.19.157.230 255.255.255.255
+    next
+    edit "IRV-SEMS-DC201"
+        set subnet 10.10.20.6 255.255.255.255
+    next
+    edit "IRV-SNTHQ-DC301"
+        set subnet 10.100.4.21 255.255.255.255
+    next
+    edit "IRV-VAULT1"
+        set subnet 10.100.6.20 255.255.255.255
+    next
+    edit "IRV-VAULT2"
+        set subnet 10.100.6.21 255.255.255.255
+    next
+    edit "PROD-PAR-A2"
+        set subnet 10.100.6.126 255.255.255.255
+    next
+    edit "WG-DRLE"
+        set subnet 172.18.99.0 255.255.255.0
+    next
+    edit "iLand-10.11.0.0/16"
+        set subnet 10.11.0.0 255.255.0.0
+    next
+    edit "OCI-D-PD-SQL"
+        set subnet 172.27.10.0 255.255.255.224
+    next
+    edit "IRV-DNA-CHDB4"
+        set subnet 10.100.6.139 255.255.255.255
+    next
+    edit "WG-PhuocTran"
+        set subnet 172.18.21.40 255.255.255.255
+    next
+    edit "OCI-VCN-ldnassdr"
+        set allow-routing enable
+        set subnet 172.27.121.0 255.255.255.0
+    next
+    edit "OCI-VCN-ldnadbdr"
+        set allow-routing enable
+        set subnet 172.27.110.0 255.255.255.0
+    next
+    edit "OCI-VCN-ldnadbssdr"
+        set allow-routing enable
+        set subnet 172.27.111.0 255.255.255.0
+    next
+    edit "OCI-VCN-ldnasysdr"
+        set allow-routing enable
+        set subnet 172.27.120.0 255.255.255.0
+    next
+    edit "OCI-PHX-DR-B1_local_subnet_1"
+        set allow-routing enable
+    next
+    edit "OCI-PHX-DR-B1_remote_subnet_1"
+        set allow-routing enable
+    next
+    edit "OCI-d-dr-ext-web01"
+        set subnet 172.27.120.94 255.255.255.255
+    next
+    edit "OCI-D-DR-SQL"
+        set subnet 172.27.110.0 255.255.255.224
+    next
+    edit "OCI-d-dr-int-rsdb01"
+        set subnet 172.27.110.67 255.255.255.255
+    next
+    edit "OCI-d-dr-int-fp01"
+        set subnet 172.27.120.2 255.255.255.255
+    next
+    edit "OCI-d-dr-ext-api01"
+        set subnet 172.27.120.38 255.255.255.255
+    next
+    edit "OCI-d-dr-int-api01"
+        set subnet 172.27.120.6 255.255.255.255
+    next
+    edit "OCI-d-dr-int-dna01"
+        set subnet 172.27.120.8 255.255.255.255
+    next
+    edit "IRV-DNA-WEB1-10.100.2.142"
+        set subnet 10.100.2.142 255.255.255.255
+    next
+    edit "OCI-D-QA-SQL"
+        set allow-routing enable
+        set subnet 172.27.112.0 255.255.255.224
+    next
+    edit "Proxy-msdoc.sentineldna.com"
+        set subnet 10.10.20.70 255.255.255.255
+    next
+    edit "Proxy-monitor.sentineldna.com"
+        set subnet 10.10.20.71 255.255.255.255
+    next
+    edit "Proxy-fjdem.sentineldna.com"
+        set subnet 10.10.20.74 255.255.255.255
+    next
+    edit "Proxy-sales.sentineldna.com"
+        set subnet 10.10.20.76 255.255.255.255
+    next
+    edit "Proxy-www.sentrakla.com"
+        set subnet 10.10.20.78 255.255.255.255
+    next
+    edit "IRV-SEMS-DC1"
+        set subnet 10.10.20.13 255.255.255.255
+    next
+    edit "IRV-SEMS-DC2"
+        set subnet 10.10.20.14 255.255.255.255
+    next
+    edit "IRV-DNA-REDIS1"
+        set subnet 10.100.2.180 255.255.255.255
+    next
+    edit "WG-JimKillian"
+        set subnet 172.18.21.147 255.255.255.255
+    next
+    edit "DEV-JKILLIAN"
+        set subnet 10.100.6.247 255.255.255.255
+    next
+    edit "WG-SathishNagarajan"
+        set subnet 172.18.21.150 255.255.255.255
+    next
+    edit "SNT-IRV-STORE"
+        set subnet 10.100.2.12 255.255.255.255
+    next
+    edit "IRV-DNA-FPDB1"
+        set subnet 10.100.6.140 255.255.255.255
+    next
+    edit "irv-dev-pg2"
+        set subnet 10.10.30.40 255.255.255.255
+    next
+    edit "DAL-DNA-POSTGRES1"
+        set subnet 10.10.30.28 255.255.255.255
+    next
+    edit "OCI-FP-NW-SharedServices"
+        set allow-routing enable
+        set subnet 172.31.0.0 255.255.0.0
+    next
+    edit "Wireguard VPN"
+        set allow-routing enable
+        set subnet 172.18.0.0 255.255.0.0
+    next
+    edit "Simon-ATT"
+        set subnet 108.237.138.16 255.255.255.248
+    next
+    edit "HOL_VLAN-100"
+        set allow-routing enable
+        set subnet 10.7.1.0 255.255.255.0
+    next
+    edit "HOL_WiFi"
+        set allow-routing enable
+        set subnet 10.7.2.0 255.255.255.0
+    next
+    edit "CVS"
+        set color 21
+        set allow-routing enable
+        set subnet 10.100.222.0 255.255.255.0
+    next
+    edit "IRV-AW-Sensor"
+        set comment "sentineloffender4 awn202"
+        set subnet 10.10.14.99 255.255.255.255
+    next
+    edit "HCK-FIN-DT08-Martika-10.1.1.45"
+        set subnet 10.1.1.45 255.255.255.255
+    next
+    edit "WG-MartikaMuratalla"
+        set subnet 172.18.22.117 255.255.255.255
+    next
+    edit "TarrantCountyLAN"
+        set allow-routing enable
+        set subnet 10.254.0.0 255.255.255.0
+    next
+    edit "OCI-Ashburn-10.30.0.0"
+        set allow-routing enable
+        set subnet 10.30.0.0 255.255.0.0
+    next
+    edit "OCI-lshdsyspdutl01"
+        set allow-routing enable
+        set subnet 10.30.3.0 255.255.255.240
+    next
+    edit "OCI-fpcjprodgg01"
+        set subnet 172.31.232.10 255.255.255.255
+    next
+    edit "IRV-DNA-ARCHIVE"
+        set subnet 10.100.2.113 255.255.255.255
+    next
+    edit "OCI-Ashburn-10.20.0.0"
+        set allow-routing enable
+        set subnet 10.20.0.0 255.255.0.0
+    next
+    edit "OCI-FP-Prod-App"
+        set subnet 172.27.20.0 255.255.255.224
+    next
+    edit "WG-RayBican"
+        set subnet 172.18.21.156 255.255.255.255
+    next
+    edit "SYNQA.lswifppddb01.lswifppd"
+        set subnet 172.31.232.55 255.255.255.255
+    next
+    edit "WG_TomHuguenard"
+        set subnet 172.18.21.159 255.255.255.255
+    next
+    edit "hap-1_reports.sentineldna.com"
+        set subnet 10.10.20.50 255.255.255.255
+    next
+    edit "lsynnwnpdgeo01"
+        set comment "Geo LB"
+        set subnet 10.20.2.0 255.255.255.240
+    next
+    edit "MFG19"
+        set subnet 10.100.6.241 255.255.255.255
+    next
+    edit "WG-DarrylMartin"
+        set subnet 172.18.25.63 255.255.255.255
+    next
+    edit "DarrylMartin-Desktop"
+        set subnet 10.1.1.129 255.255.255.255
+    next
+    edit "DEV-DHAN"
+        set allow-routing enable
+        set subnet 10.100.6.250 255.255.255.255
+    next
+    edit "IRV-BILLING2"
+        set subnet 10.100.6.151 255.255.255.255
+    next
+    edit "irv-dna-app9"
+        set subnet 10.100.6.40 255.255.255.255
+    next
+    edit "WG-SubinAntony"
+        set subnet 172.18.21.170 255.255.255.255
+    next
+    edit "Holcomb"
+        set subnet 96.38.226.224 255.255.255.248
+    next
+    edit "SENTINEL_FS2"
+        set subnet 10.100.2.4 255.255.255.255
+    next
+    edit "SENTINEL_IVR"
+        set subnet 10.100.2.39 255.255.255.255
+    next
+    edit "OCI-172.31.0.0/16"
+        set allow-routing enable
+        set subnet 172.31.0.0 255.255.0.0
+    next
+    edit "prod-api-b1"
+        set subnet 10.100.6.121 255.255.255.255
+    next
+    edit "prod-api-b2"
+        set subnet 10.100.6.122 255.255.255.255
+    next
+    edit "OCI-172.27.0.0/16"
+        set allow-routing enable
+        set subnet 172.27.0.0 255.255.0.0
+    next
+    edit "SIM-ITOPS-10.2.5.0/24"
+        set allow-routing enable
+        set subnet 10.2.5.0 255.255.255.0
+    next
+    edit "FW-MGMT"
+        set allow-routing enable
+        set subnet 192.168.99.0 255.255.255.0
+    next
+    edit "api.sentineldna.com_internal"
+        set allow-routing enable
+        set subnet 10.100.6.112 255.255.255.255
+    next
+    edit "OCI-ASHBURN1"
+        set allow-routing enable
+        set subnet 155.248.8.90 255.255.255.255
+    next
+    edit "OCI-ASHBURN2"
+        set allow-routing enable
+        set subnet 155.248.9.71 255.255.255.255
+    next
+    edit "10.10.25.0/24"
+        set allow-routing enable
+        set subnet 10.10.25.0 255.255.255.0
+    next
+    edit "SNA-10.110.196.0/24"
+        set allow-routing enable
+        set subnet 10.110.196.0 255.255.255.0
+    next
+    edit "IRV-FILE2"
+        set allow-routing enable
+        set subnet 10.100.6.7 255.255.255.255
+    next
+    edit "s-np-sso-sm2"
+        set allow-routing enable
+        set subnet 10.20.4.88 255.255.255.255
+    next
+    edit "WG-ChrisMoran"
+        set allow-routing enable
+        set subnet 172.18.21.162 255.255.255.255
+    next
+    edit "snt-irv-itstore"
+        set allow-routing enable
+        set subnet 10.100.2.8 255.255.255.255
+    next
+    edit "WG-DavidWalters"
+        set subnet 172.18.22.186 255.255.255.255
+    next
+    edit "WG-LilianArmanyous"
+        set subnet 172.18.22.178 255.255.255.255
+    next
+    edit "HCK-MC-DT11-David-10.1.1.39"
+        set subnet 10.1.1.39 255.255.255.255
+    next
+    edit "HCK-MC-DT09-Lilian-10.1.1.15"
+        set subnet 10.1.1.15 255.255.255.255
+    next
+    edit "NORCO-FW-Public"
+        set subnet 71.95.21.234 255.255.255.255
+    next
+    edit "WG-ChristySuazo"
+        set subnet 172.18.25.85 255.255.255.255
+    next
+    edit "CHRISTY-10.3.1.7"
+        set subnet 10.3.1.7 255.255.255.255
+    next
+    edit "irv-zbxproxy1"
+        set subnet 10.100.6.102 255.255.255.255
+    next
+    edit "DALCO"
+        set allow-routing enable
+        set subnet 192.168.152.0 255.255.254.0
+    next
+    edit "vpn0"
+        set allow-routing enable
+        set subnet 10.244.0.0 255.255.0.0
+    next
+    edit "it-operations-oci"
+        set allow-routing enable
+        set subnet 10.250.0.0 255.255.0.0
+    next
+    edit "WG-MarcieAvalos"
+        set subnet 172.18.22.176 255.255.255.255
+    next
+    edit "MARCIE-MarcieAvalos-10.1.1.188"
+        set subnet 10.1.1.188 255.255.255.255
+    next
+    edit "WG-SiriyaBoonthawatchai"
+        set subnet 172.18.22.177 255.255.255.255
+    next
+    edit "HCK-FIN-DT03-Siriya-10.1.1.149"
+        set subnet 10.1.1.149 255.255.255.255
+    next
+    edit "WG-MarisolGreenberg"
+        set subnet 172.18.22.107 255.255.255.255
+    next
+    edit "HCK-FIN-DT01-Marisol-10.1.1.215"
+        set subnet 10.1.1.215 255.255.255.255
+    next
+    edit "WG-ChandanKaur"
+        set subnet 172.18.22.169 255.255.255.255
+    next
+    edit "HCK-FIN-DT04-Chandan-10.1.1.2"
+        set subnet 10.1.1.2 255.255.255.255
+    next
+    edit "WG-DanPetrescu"
+        set subnet 172.18.22.175 255.255.255.255
+    next
+    edit "HCK-FIN-DT06-Dan-10.1.1.10"
+        set subnet 10.1.1.10 255.255.255.255
+    next
+    edit "WG-ShengXiong"
+        set subnet 172.18.25.93 255.255.255.255
+    next
+    edit "HCK-AST-DT2-Sheng-10.1.1.125"
+        set subnet 10.1.1.125 255.255.255.255
+    next
+    edit "WG-MCAPPS"
+        set allow-routing enable
+        set subnet 172.18.25.0 255.255.255.0
+    next
+    edit "WG-BhaghirathiKundu"
+        set subnet 172.18.21.25 255.255.255.255
+    next
+    edit "IRV-DNA-LLCH2"
+        set subnet 10.100.6.39 255.255.255.255
+    next
+    edit "IRV-DNA-LLCH1"
+        set subnet 10.100.6.37 255.255.255.255
+    next
+    edit "OCI-SYN-10.20.4.112/28"
+        set subnet 10.20.4.112 255.255.255.240
+    next
+    edit "OCI-SYN-10.20.4.128/28"
+        set subnet 10.20.4.128 255.255.255.240
+    next
+    edit "KamalJohsi"
+        set subnet 172.18.221.158 255.255.255.255
+    next
+    edit "WG-CharmaineWatson"
+        set subnet 172.18.22.53 255.255.255.255
+    next
+    edit "HCK-FIN-DT07-Charmaine-10.1.1.23"
+        set subnet 10.1.1.23 255.255.255.255
+    next
+end

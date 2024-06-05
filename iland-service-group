@@ -1,0 +1,23 @@
+config firewall service group
+    edit "Email Access"
+        set member "DNS" "IMAP" "IMAPS" "POP3" "POP3S" "SMTP" "SMTPS"
+    next
+    edit "Web Access"
+        set member "DNS" "HTTP" "HTTPS"
+    next
+    edit "Windows AD"
+        set member "DCE-RPC" "DNS" "KERBEROS" "LDAP" "LDAP_UDP" "SAMBA" "SMB"
+    next
+    edit "Exchange Server"
+        set member "DCE-RPC" "DNS" "HTTPS"
+    next
+    edit "Management-Tools"
+        set member "Active Directory Services" "DCE-RPC" "DNS" "LDAP" "LDAP_UDP" "KERBEROS" "AD_GlobalCatalog" "SMB" "PING" "TRACEROUTE"
+    next
+    edit "TURN"
+        set member "TCP-3478-TURN" "TCP-5349-TURN" "UDP-3478-TURN" "UDP-49152-49172-TURN" "UDP-5349-TURN"
+    next
+    edit "OVPN_Servers"
+        set member "OVPN_Acct_SENT_48023" "OVPN_Acct_SENT_50539" "OVPN_Fulfilment_54059" "OVPN_HR_SEMS_47969" "OVPN_IT_SEMS_46051" "OVPN_Ladera-SENT_47797" "OVPN_MC_RDP_SEMS_48119" "OVPN_Ops_RDP_SEMS_48271" "OVPN_Portal_SEMS_48091" "OVPN_PORTAL_SEMS_53993" "OVPN_Portal_SENT_48479" "OVPN_PORTAL_SENTINEL_54409" "OVPN_Sales_SEMS_46349" "OVPN_WAH_SEMS_44017"
+    next
+end

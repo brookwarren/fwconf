@@ -1,0 +1,285 @@
+config firewall vip
+    edit "VIP_B.MX_NAT_PERMANENT"
+        set extip 63.175.119.52
+        set mappedip "10.10.20.10"
+        set extintf "any"
+    next
+    edit "VIP_focalpoint.sentineldna.com"
+        set extip 63.175.119.96
+        set mappedip "10.10.20.73"
+        set extintf "any"
+    next
+    edit "VIP_www.sentrakla.com"
+        set extip 63.175.119.4
+        set mappedip "10.10.20.78"
+        set extintf "any"
+    next
+    edit "VIP_VPN-Pritunl"
+        set extip 63.175.119.5
+        set mappedip "10.10.176.2"
+        set extintf "any"
+    next
+    edit "VIP_oriana.sentrak.com"
+        set extip 63.175.119.11
+        set mappedip "10.10.20.45"
+        set extintf "any"
+    next
+    edit "VIP_sp.sentrak.us.com"
+        set extip 63.175.119.12
+        set mappedip "10.10.20.124"
+        set extintf "any"
+    next
+    edit "VIP_IRV-VPN1"
+        set extip 63.175.119.13
+        set mappedip "10.10.20.204"
+        set extintf "any"
+    next
+    edit "VIP_reports.sentineldna.com"
+        set extip 63.175.119.15
+        set mappedip "10.10.20.50"
+        set extintf "any"
+    next
+    edit "VIP_qa.sentineldna.com"
+        set extip 63.175.119.16
+        set mappedip "10.10.20.58"
+        set extintf "any"
+    next
+    edit "VIP_app.sentineldna.com"
+        set extip 63.175.119.17
+        set mappedip "10.10.20.65"
+        set extintf "any"
+    next
+    edit "VIP_oriana.sentineldna.com"
+        set extip 63.175.119.19
+        set mappedip "10.10.20.67"
+        set extintf "any"
+    next
+    edit "VIP_app2.sentineldna.com"
+        set extip 63.175.119.21
+        set mappedip "10.10.20.68"
+        set extintf "any"
+    next
+    edit "VIP_west.sentineldna.com"
+        set extip 63.175.119.24
+        set mappedip "10.10.20.69"
+        set extintf "any"
+    next
+    edit "VIP_msdoc.sentineldna.com"
+        set extip 63.175.119.25
+        set mappedip "10.10.20.70"
+        set extintf "any"
+    next
+    edit "VIP_www.sentineldna.com"
+        set extip 63.175.119.27
+        set mappedip "10.10.20.75"
+        set extintf "any"
+    next
+    edit "VIP_sales.sentineldna.com"
+        set extip 63.175.119.29
+        set mappedip "10.10.20.76"
+        set extintf "any"
+    next
+    edit "VIP_dtivr.sentineldna.com"
+        set extip 63.175.119.38
+        set mappedip "10.10.20.55"
+        set extintf "any"
+    next
+    edit "VIP_api.sentineldna.com"
+        set extip 63.175.119.39
+        set mappedip "10.100.6.112"
+        set extintf "any"
+    next
+    edit "VIP_portal.sentineldna.com"
+        set extip 63.175.119.42
+        set mappedip "10.100.9.11"
+        set extintf "any"
+        set portforward enable
+        set extport 52999
+        set mappedport 52999
+    next
+    edit "VIP_IRVSNTAPN1"
+        set extip 63.175.119.66
+        set mappedip "10.10.14.2"
+        set extintf "any"
+    next
+    edit "VIP_IRVSNTAPN2"
+        set extip 63.175.119.67
+        set mappedip "10.50.14.2"
+        set extintf "any"
+    next
+    edit "VIP_fw2.irv.sentineladvantage.com"
+        set extip 63.175.119.78
+        set mappedip "10.10.20.176"
+        set extintf "any"
+    next
+    edit "VIP_monitor.sentineldna.com"
+        set extip 63.175.119.79
+        set mappedip "10.10.20.71"
+        set extintf "any"
+    next
+    edit "VIP_www.sentinelct.com"
+        set extip 63.175.119.82
+        set mappedip "10.10.20.72"
+        set extintf "any"
+    next
+    edit "VIP_www.sentrak.net"
+        set extip 63.175.119.95
+        set mappedip "10.10.20.140"
+        set extintf "any"
+    next
+    edit "VIP_fjdem.sentineldna.com"
+        set extip 63.175.119.112
+        set mappedip "10.10.20.74"
+        set extintf "any"
+    next
+    edit "VIP_dev.sentineldna.com"
+        set extip 63.175.119.31
+        set mappedip "10.10.20.44"
+        set extintf "any"
+    next
+    edit "VIP_dev-devmgmt.sentineldna.com"
+        set extip 63.175.119.33
+        set mappedip "10.100.7.33"
+        set extintf "any"
+    next
+    edit "VIP_qa-devmgmt.sentineldna.com"
+        set extip 63.175.119.34
+        set mappedip "10.100.7.34"
+        set extintf "any"
+    next
+    edit "VIP_datatransfer.sentineldna.com"
+        set extip 63.175.119.35
+        set mappedip "10.10.20.34"
+        set extintf "any"
+    next
+    edit "dev-mtapi.sentineldna.com"
+        set extip 63.175.119.10
+        set mappedip "10.10.20.49"
+        set extintf "any"
+    next
+    edit "VIP_devicegw.sentineldna.com"
+        set extip 63.175.119.37
+        set mappedip "10.10.20.35"
+        set extintf "any"
+    next
+    edit "VIP_devicemgmt.sentineldna.com"
+        set extip 63.175.119.40
+        set mappedip "10.10.20.40"
+        set extintf "any"
+    next
+    edit "VIP_Shane_RDP"
+        set src-filter "99.74.203.247/32" "68.118.113.230/32"
+        set service "RDP-48281"
+        set extip 63.175.119.122
+        set mappedip "10.100.6.24"
+        set extintf "any"
+        set portforward enable
+        set mappedport 3389
+    next
+    edit "VIP_qa-mtapi.sentineldna.com"
+        set extip 63.175.119.18
+        set mappedip "10.10.20.42"
+        set extintf "any"
+    next
+    edit "VIP_v3.sentrak.com"
+        set extip 63.175.119.14
+        set mappedip "10.10.20.138"
+        set extintf "any"
+    next
+    edit "VIP_scottsdale.sentrak.org"
+        set service "FTP" "TCP-50900-50999" "TCP-989-990"
+        set extip 63.175.119.23
+        set mappedip "10.100.2.45"
+        set extintf "any"
+    next
+    edit "VIP_LE_scottsdale.sentrak.org"
+        set service "HTTP"
+        set extip 63.175.119.23
+        set mappedip "10.10.20.25"
+        set extintf "any"
+    next
+    edit "VIP_mtapi.sentineldna.com"
+        set extip 63.175.119.8
+        set mappedip "10.10.20.48"
+        set extintf "any"
+    next
+    edit "VIP_qa-datatransfer.sentineldna.com"
+        set extip 63.175.119.45
+        set mappedip "10.10.20.54"
+        set extintf "any"
+    next
+    edit "VIP_A.MX_NAT_PERMANENT"
+        set extip 63.175.119.47
+        set mappedip "10.10.20.32"
+        set extintf "any"
+    next
+    edit "dev-victimapp-onpremise-coordinator.sentineldna.com:9200"
+        set service "victimapp-coordinator"
+        set extip 63.175.119.48
+        set mappedip "10.10.20.62"
+        set extintf "any"
+        set portforward enable
+        set mappedport 9200
+    next
+    edit "VIP_LE_dev-services"
+        set service "HTTP"
+        set extip 63.175.119.48
+        set mappedip "10.10.20.25"
+        set extintf "any"
+    next
+    edit "qa-victimapp-onpremise-coordinator.sentineldna.com:9200"
+        set service "victimapp-coordinator"
+        set extip 63.175.119.49
+        set mappedip "10.10.20.63"
+        set extintf "any"
+        set portforward enable
+        set mappedport 9200
+    next
+    edit "VIP_LE_qa-services"
+        set service "HTTP"
+        set extip 63.175.119.49
+        set mappedip "10.10.20.25"
+        set extintf "any"
+    next
+    edit "prod-victimapp-onpremise-coordinator.sentineldna.com:9200"
+        set service "victimapp-coordinator"
+        set extip 63.175.119.50
+        set mappedip "10.10.20.64"
+        set extintf "any"
+        set portforward enable
+        set mappedport 9200
+    next
+    edit "VIP_LE_prod-services"
+        set service "HTTP"
+        set extip 63.175.119.50
+        set mappedip "10.10.20.25"
+        set extintf "any"
+    next
+    edit "CheckIn_ga.sentinelnet.net"
+        set service "TCP-8085"
+        set extip 63.175.119.23
+        set mappedip "10.100.2.115"
+        set extintf "any"
+    next
+    edit "VIP_portal.sentineldna.com_443"
+        set extip 63.175.119.42
+        set mappedip "10.100.9.11"
+        set extintf "any"
+        set portforward enable
+        set extport 443
+        set mappedport 52999
+    next
+    edit "f249.sosit.us"
+        set extip 63.175.119.6
+        set mappedip "10.10.20.16"
+        set extintf "any"
+    next
+    edit "x249.sosit.us"
+        set extip 63.175.119.7
+        set mappedip "10.10.20.16"
+        set extintf "any"
+        set portforward enable
+        set extport 47237
+        set mappedport 47237
+    next
+end

@@ -1,0 +1,602 @@
+config firewall service custom
+    edit "DNS"
+        set category "Network Services"
+        set tcp-portrange 53
+        set udp-portrange 53
+    next
+    edit "HTTP"
+        set category "Web Access"
+        set tcp-portrange 80
+    next
+    edit "HTTPS"
+        set category "Web Access"
+        set tcp-portrange 443
+    next
+    edit "IMAP"
+        set category "Email"
+        set tcp-portrange 143
+    next
+    edit "IMAPS"
+        set category "Email"
+        set tcp-portrange 993
+    next
+    edit "LDAP"
+        set category "Authentication"
+        set tcp-portrange 389
+    next
+    edit "DCE-RPC"
+        set category "Remote Access"
+        set tcp-portrange 135
+        set udp-portrange 135
+    next
+    edit "POP3"
+        set category "Email"
+        set tcp-portrange 110
+    next
+    edit "POP3S"
+        set category "Email"
+        set tcp-portrange 995
+    next
+    edit "SAMBA"
+        set category "File Access"
+        set tcp-portrange 139
+    next
+    edit "SMTP"
+        set category "Email"
+        set tcp-portrange 25
+    next
+    edit "SMTPS"
+        set category "Email"
+        set tcp-portrange 465 587
+    next
+    edit "KERBEROS"
+        set category "Authentication"
+        set tcp-portrange 88 464
+        set udp-portrange 88 464
+    next
+    edit "LDAP_UDP"
+        set category "Authentication"
+        set udp-portrange 389
+    next
+    edit "SMB"
+        set category "File Access"
+        set tcp-portrange 445
+    next
+    edit "FTP"
+        set category "File Access"
+        set tcp-portrange 21
+    next
+    edit "FTP_GET"
+        set category "File Access"
+        set tcp-portrange 21
+    next
+    edit "FTP_PUT"
+        set category "File Access"
+        set tcp-portrange 21
+    next
+    edit "ALL"
+        set category "General"
+        set protocol IP
+    next
+    edit "ALL_TCP"
+        set category "General"
+        set tcp-portrange 1-65535
+    next
+    edit "ALL_UDP"
+        set category "General"
+        set udp-portrange 1-65535
+    next
+    edit "ALL_ICMP"
+        set category "General"
+        set protocol ICMP
+        unset icmptype
+    next
+    edit "ALL_ICMP6"
+        set category "General"
+        set protocol ICMP6
+        unset icmptype
+    next
+    edit "GRE"
+        set category "Tunneling"
+        set protocol IP
+        set protocol-number 47
+    next
+    edit "AH"
+        set category "Tunneling"
+        set protocol IP
+        set protocol-number 51
+    next
+    edit "ESP"
+        set category "Tunneling"
+        set protocol IP
+        set protocol-number 50
+    next
+    edit "AOL"
+        set visibility disable
+        set tcp-portrange 5190-5194
+    next
+    edit "BGP"
+        set category "Network Services"
+        set tcp-portrange 179
+    next
+    edit "DHCP"
+        set category "Network Services"
+        set udp-portrange 67-68
+    next
+    edit "FINGER"
+        set visibility disable
+        set tcp-portrange 79
+    next
+    edit "GOPHER"
+        set visibility disable
+        set tcp-portrange 70
+    next
+    edit "H323"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 1720 1503
+        set udp-portrange 1719
+    next
+    edit "IKE"
+        set category "Tunneling"
+        set udp-portrange 500 4500
+    next
+    edit "Internet-Locator-Service"
+        set visibility disable
+        set tcp-portrange 389
+    next
+    edit "IRC"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 6660-6669
+    next
+    edit "L2TP"
+        set category "Tunneling"
+        set tcp-portrange 1701
+        set udp-portrange 1701
+    next
+    edit "NetMeeting"
+        set visibility disable
+        set tcp-portrange 1720
+    next
+    edit "NFS"
+        set category "File Access"
+        set tcp-portrange 111 2049
+        set udp-portrange 111 2049
+    next
+    edit "NNTP"
+        set visibility disable
+        set tcp-portrange 119
+    next
+    edit "NTP"
+        set category "Network Services"
+        set tcp-portrange 123
+        set udp-portrange 123
+    next
+    edit "OSPF"
+        set category "Network Services"
+        set protocol IP
+        set protocol-number 89
+    next
+    edit "PC-Anywhere"
+        set category "Remote Access"
+        set tcp-portrange 5631
+        set udp-portrange 5632
+    next
+    edit "PING"
+        set category "Network Services"
+        set protocol ICMP
+        set icmptype 8
+        unset icmpcode
+    next
+    edit "TIMESTAMP"
+        set protocol ICMP
+        set visibility disable
+        set icmptype 13
+        unset icmpcode
+    next
+    edit "INFO_REQUEST"
+        set protocol ICMP
+        set visibility disable
+        set icmptype 15
+        unset icmpcode
+    next
+    edit "INFO_ADDRESS"
+        set protocol ICMP
+        set visibility disable
+        set icmptype 17
+        unset icmpcode
+    next
+    edit "ONC-RPC"
+        set category "Remote Access"
+        set tcp-portrange 111
+        set udp-portrange 111
+    next
+    edit "PPTP"
+        set category "Tunneling"
+        set tcp-portrange 1723
+    next
+    edit "QUAKE"
+        set visibility disable
+        set udp-portrange 26000 27000 27910 27960
+    next
+    edit "RAUDIO"
+        set visibility disable
+        set udp-portrange 7070
+    next
+    edit "REXEC"
+        set visibility disable
+        set tcp-portrange 512
+    next
+    edit "RIP"
+        set category "Network Services"
+        set udp-portrange 520
+    next
+    edit "RLOGIN"
+        set visibility disable
+        set tcp-portrange 513:512-1023
+    next
+    edit "RSH"
+        set visibility disable
+        set tcp-portrange 514:512-1023
+    next
+    edit "SCCP"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 2000
+    next
+    edit "SIP"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 5060
+        set udp-portrange 5060
+    next
+    edit "SIP-MSNmessenger"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 1863
+    next
+    edit "SNMP"
+        set category "Network Services"
+        set tcp-portrange 161-162
+        set udp-portrange 161-162
+    next
+    edit "SSH"
+        set category "Remote Access"
+        set tcp-portrange 22
+    next
+    edit "SYSLOG"
+        set category "Network Services"
+        set tcp-portrange 514
+        set udp-portrange 514
+    next
+    edit "TALK"
+        set visibility disable
+        set udp-portrange 517-518
+    next
+    edit "TELNET"
+        set category "Remote Access"
+        set tcp-portrange 23
+    next
+    edit "TFTP"
+        set category "File Access"
+        set udp-portrange 69
+    next
+    edit "MGCP"
+        set visibility disable
+        set udp-portrange 2427 2727
+    next
+    edit "UUCP"
+        set visibility disable
+        set tcp-portrange 540
+    next
+    edit "VDOLIVE"
+        set visibility disable
+        set tcp-portrange 7000-7010
+    next
+    edit "WAIS"
+        set visibility disable
+        set tcp-portrange 210
+    next
+    edit "WINFRAME"
+        set visibility disable
+        set tcp-portrange 1494 2598
+    next
+    edit "X-WINDOWS"
+        set category "Remote Access"
+        set tcp-portrange 6000-6063
+    next
+    edit "PING6"
+        set protocol ICMP6
+        set visibility disable
+        set icmptype 128
+        unset icmpcode
+    next
+    edit "MS-SQL"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 1433 1434
+    next
+    edit "MYSQL"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 3306
+    next
+    edit "RDP"
+        set category "Remote Access"
+        set tcp-portrange 3389
+        set udp-portrange 3389
+    next
+    edit "VNC"
+        set category "Remote Access"
+        set tcp-portrange 5900
+    next
+    edit "DHCP6"
+        set category "Network Services"
+        set udp-portrange 546 547
+    next
+    edit "SQUID"
+        set category "Tunneling"
+        set tcp-portrange 3128
+    next
+    edit "SOCKS"
+        set category "Tunneling"
+        set tcp-portrange 1080
+        set udp-portrange 1080
+    next
+    edit "WINS"
+        set category "Remote Access"
+        set tcp-portrange 1512
+        set udp-portrange 1512
+    next
+    edit "RADIUS"
+        set category "Authentication"
+        set udp-portrange 1812 1813
+    next
+    edit "RADIUS-OLD"
+        set visibility disable
+        set udp-portrange 1645 1646
+    next
+    edit "CVSPSERVER"
+        set visibility disable
+        set tcp-portrange 2401
+        set udp-portrange 2401
+    next
+    edit "AFS3"
+        set category "File Access"
+        set tcp-portrange 7000-7009
+        set udp-portrange 7000-7009
+    next
+    edit "TRACEROUTE"
+        set category "Network Services"
+        set udp-portrange 33434-33535
+    next
+    edit "RTSP"
+        set category "VoIP, Messaging & Other Applications"
+        set tcp-portrange 554 7070 8554
+        set udp-portrange 554
+    next
+    edit "MMS"
+        set visibility disable
+        set tcp-portrange 1755
+        set udp-portrange 1024-5000
+    next
+    edit "NONE"
+        set visibility disable
+        set tcp-portrange 0
+    next
+    edit "webproxy"
+        set proxy enable
+        set category "Web Proxy"
+        set protocol ALL
+        set tcp-portrange 0-65535:0-65535
+    next
+    edit "OVPN_Portal_SEMS_48091"
+        set udp-portrange 48091
+    next
+    edit "TCP-8000"
+        set tcp-portrange 8000
+    next
+    edit "OVPN_WAH_SEMS_44017"
+        set udp-portrange 44017
+    next
+    edit "OVPN_Acct_SENT_48023"
+        set udp-portrange 48023
+    next
+    edit "OVPN_Portal_SENT_48479"
+        set udp-portrange 48479
+    next
+    edit "OVPN_MC_RDP_SEMS_48119"
+        set udp-portrange 48119
+    next
+    edit "OVPN_Ops_RDP_SEMS_48271"
+        set udp-portrange 48271
+    next
+    edit "OVPN_IT_SEMS_46051"
+        set udp-portrange 46051
+    next
+    edit "OVPN_HR_SEMS_47969"
+        set udp-portrange 47969
+    next
+    edit "OVPN_Ladera-SENT_47797"
+        set udp-portrange 47797
+    next
+    edit "OVPN_Sales_SEMS_46349"
+        set udp-portrange 46349
+    next
+    edit "Portal_TCP-52999"
+        set tcp-portrange 52999
+    next
+    edit "TCP-989-990"
+        set category "File Access"
+        set tcp-portrange 989-990
+    next
+    edit "TCP-50900-50999"
+        set category "File Access"
+        set tcp-portrange 50900-50999
+    next
+    edit "OVPN_Acct_SENT_50539"
+        set udp-portrange 50539
+    next
+    edit "OVPN_PORTAL_SEMS_53993"
+        set udp-portrange 53993
+    next
+    edit "OVPN_PORTAL_SENTINEL_54409"
+        set udp-portrange 54409
+    next
+    edit "OVPN_SENTINEL_54013_DEV7"
+        set udp-portrange 54013
+    next
+    edit "RDP-48281"
+        set category "Remote Access"
+        set tcp-portrange 48281
+        set udp-portrange 48281
+    next
+    edit "RADIUS-2812"
+        set udp-portrange 2812
+    next
+    edit "TCP-8080"
+        set tcp-portrange 8080
+    next
+    edit "SENTINEL_Duo_LDAP"
+        set color 15
+        set tcp-portrange 8389
+        set udp-portrange 8389
+    next
+    edit "SENTINEL_Duo_LDAPS"
+        set color 15
+        set tcp-portrange 8636
+        set udp-portrange 8636
+    next
+    edit "AD_GlobalCatalog"
+        set tcp-portrange 3268-3269
+        set udp-portrange 3268-3269
+    next
+    edit "RDP-14071"
+        set category "Remote Access"
+        set tcp-portrange 14071
+        set udp-portrange 14071
+    next
+    edit "Active Directory Services"
+        set tcp-portrange 49152-65535
+    next
+    edit "Jenkins-45000"
+        set tcp-portrange 45000
+    next
+    edit "TCP-3478-TURN"
+        set tcp-portrange 3478
+    next
+    edit "UDP-3478-TURN"
+        set udp-portrange 3478
+    next
+    edit "TCP-5349-TURN"
+        set tcp-portrange 5349
+    next
+    edit "UDP-5349-TURN"
+        set udp-portrange 5349
+    next
+    edit "UDP-49152-49172-TURN"
+        set udp-portrange 49152-49172
+    next
+    edit "victimapp-coordinator"
+        set tcp-portrange 9200
+    next
+    edit "OVPN_Fulfilment_54059"
+        set udp-portrange 54059
+    next
+    edit "WG_IT_UDP-41771"
+        set udp-portrange 41771
+    next
+    edit "WG_SoftDev_UDP-42021"
+        set comment "SoftDev"
+        set udp-portrange 42021
+    next
+    edit "WG_Accounting_UDP-42022"
+        set udp-portrange 42022
+    next
+    edit "WG_Sales_UDP-42023"
+        set udp-portrange 42023
+    next
+    edit "WG_Portal_UDP-42024"
+        set udp-portrange 42024
+    next
+    edit "WG_HomeInventory_UDP-42025"
+        set udp-portrange 42025
+    next
+    edit "RDP-56713"
+        set category "Remote Access"
+        set tcp-portrange 56713
+        set udp-portrange 56713
+    next
+    edit "TCP-8085"
+        set tcp-portrange 8085
+    next
+    edit "TCP-8200"
+        set tcp-portrange 8200
+    next
+    edit "RDP-43787"
+        set category "Remote Access"
+        set tcp-portrange 43787
+        set udp-portrange 43787
+    next
+    edit "Postgres"
+        set tcp-portrange 5432
+        set udp-portrange 5432
+    next
+    edit "RabbitMQ-5672"
+        set tcp-portrange 5672
+    next
+    edit "RabbitMQ-MGMT-15672"
+        set tcp-portrange 15672
+    next
+    edit "TCP-6379"
+        set tcp-portrange 6379
+    next
+    edit "SQL03-SQLEXPRESS"
+        set tcp-portrange 54686 54756 54809 63008
+    next
+    edit "WG_IT_DRLE"
+        set udp-portrange 41177
+    next
+    edit "TCP-8081"
+        set tcp-portrange 8081
+    next
+    edit "TCP-47237"
+        set tcp-portrange 47237
+    next
+    edit "TCP/8010"
+        set tcp-portrange 8010
+    next
+    edit "TCP/8008"
+        set tcp-portrange 8008
+    next
+    edit "TCP/8020"
+        set tcp-portrange 8020
+    next
+    edit "OracleDB"
+        set tcp-portrange 1521
+    next
+    edit "TCP-8002"
+        set tcp-portrange 8002
+    next
+    edit "TCP-8001"
+        set tcp-portrange 8001
+    next
+    edit "Geoaddress"
+        set tcp-portrange 3005-3006 4000
+    next
+    edit "MS-SQL-additional"
+        set tcp-portrange 1338
+    next
+    edit "TCP-8084"
+        set tcp-portrange 8084
+    next
+    edit "Zabbix"
+        set tcp-portrange 10051
+    next
+    edit "MongoDB"
+        set tcp-portrange 27017
+    next
+    edit "TCP-8005"
+        set tcp-portrange 8005
+    next
+    edit "LE-10000"
+        set tcp-portrange 10000
+    next
+    edit "TCP-8015"
+        set tcp-portrange 8015
+    next
+end

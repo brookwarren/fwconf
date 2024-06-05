@@ -1,0 +1,2102 @@
+config firewall policy
+    edit 15
+        set name "focalpoint.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI_fppdnat1"
+        set dstaddr "VIP_focalpoint.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 234
+        set name "Block-VIP-Ports"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set srcaddr "all"
+        set dstaddr "VIP_www.sentineldna.com" "VIP_qa.sentineldna.com"
+        set schedule "always"
+        set service "TCP/8008" "TCP/8010" "TCP/8020"
+        set logtraffic disable
+        set match-vip enable
+    next
+    edit 3
+        set name "www.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_www.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 203
+        set name "MX_SMTP"
+        set srcintf "VLAN-14"
+        set dstintf "ATT-IR2FW1"
+        set action accept
+        set srcaddr "A.MX" "B.MX"
+        set dstaddr "all"
+        set schedule "always"
+        set service "SMTP" "SMTPS"
+        set nat enable
+    next
+    edit 93
+        set name "Block_Outbound_SMTP"
+        set srcintf "VLAN-14"
+        set dstintf "ATT-IR2FW1"
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "SMTP"
+        set logtraffic all
+    next
+    edit 5
+        set name "Outbound_NAT"
+        set srcintf "VLAN-14"
+        set dstintf "ATT-IR2FW1"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+        set nat enable
+    next
+    edit 210
+        set name "VPN-176-to-Internet"
+        set srcintf "Outside-VPN-176"
+        set dstintf "ATT-IR2FW1"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+        set nat enable
+    next
+    edit 177
+        set name "Management-Outbound-NAT"
+        set srcintf "Management-70"
+        set dstintf "ATT-IR2FW1"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+        set nat enable
+    next
+    edit 6
+        set name "monitor.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_monitor.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 7
+        set name "app2.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_app2.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 187
+        set name "www.sentinelct.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_www.sentinelct.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set comments "This is for a redirect"
+    next
+    edit 8
+        set name "west.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_west.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 9
+        set name "www.sentrakla.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_www.sentrakla.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 211
+        set name "VPN-Pritunl"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "Outside-VPN-176"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_VPN-Pritunl"
+        set schedule "always"
+        set service "WG_IT_UDP-41771" "WG_SoftDev_UDP-42021" "WG_Accounting_UDP-42022" "WG_Sales_UDP-42023" "WG_Portal_UDP-42024" "WG_HomeInventory_UDP-42025" "WG_IT_DRLE"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 213
+        set name "Pritunl_Console"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "Outside-VPN-176"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_VPN-Pritunl"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 265
+        set srcintf "ATT-IR2FW1"
+        set dstintf "Outside-VPN-176"
+        set action accept
+        set srcaddr "Hancock-ATT" "Holcomb" "Brook-Home-ATT"
+        set dstaddr "VIP_VPN-Pritunl"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 12
+        set name "oriana.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_oriana.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 13
+        set name "msdoc.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_msdoc.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 14
+        set name "sales.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_sales.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 119
+        set name "dev.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_dev.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 138
+        set name "devicegw.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_devicegw.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 140
+        set name "devicemgmt.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_devicemgmt.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 132
+        set name "dev-devmgmt.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_dev-devmgmt.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 133
+        set name "qa-devmgmt.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_qa-devmgmt.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 18
+        set name "dtivr.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_dtivr.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 22
+        set name "reports.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_reports.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 23
+        set name "www.sentrak.net"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_www.sentrak.net"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 24
+        set name "qa.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_qa.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 25
+        set name "api.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_api.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 26
+        set name "oriana.sentrak.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_oriana.sentrak.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 27
+        set name "fjdem.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_fjdem.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 29
+        set name "app.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_app.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 33
+        set name "sp.sentrak.us.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "SharePoint-Access"
+        set dstaddr "VIP_sp.sentrak.us.com"
+        set schedule "always"
+        set service "HTTPS"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 175
+        set status disable
+        set name "OVPN_VPN1"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_IRV-VPN1"
+        set schedule "always"
+        set service "OVPN_Servers"
+    next
+    edit 68
+        set name "api.sentineldna.com_TCP-8000"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_api.sentineldna.com"
+        set schedule "always"
+        set service "TCP-8000"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set logtraffic all
+    next
+    edit 79
+        set name "IRVSNTAPN1_IKE"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "APN-VPNs"
+        set dstaddr "VIP_IRVSNTAPN1"
+        set schedule "always"
+        set service "IKE"
+        set logtraffic all
+    next
+    edit 80
+        set name "IRVSNTAPN2_IKE"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "APN-VPNs"
+        set dstaddr "VIP_IRVSNTAPN2"
+        set schedule "always"
+        set service "IKE"
+        set logtraffic all
+    next
+    edit 142
+        set name "Shane_IRV-UGA1_RDP"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "Shane_Alternate-68.118.113.230" "Shane-Home-99.74.203.247"
+        set dstaddr "VIP_Shane_RDP"
+        set schedule "always"
+        set service "RDP"
+        set nat enable
+    next
+    edit 95
+        set name "portal.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "Portal_Whitelist"
+        set dstaddr "VIP_portal.sentineldna.com" "VIP_portal.sentineldna.com_443"
+        set schedule "always"
+        set service "Portal_TCP-52999" "PING"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set logtraffic all
+    next
+    edit 146
+        set name "v3.sentrak.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "Sentinel_Clinton_Co_IN" "Brook-Home-ATT" "Shane-Home-99.74.203.247"
+        set dstaddr "VIP_v3.sentrak.com"
+        set schedule "always"
+        set service "HTTPS"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 158
+        set name "mtapi.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_mtapi.sentineldna.com"
+        set schedule "always"
+        set service "HTTP" "HTTPS"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 159
+        set name "dev-mtapi.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "dev-mtapi.sentineldna.com"
+        set schedule "always"
+        set service "HTTP" "HTTPS"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 145
+        set name "qa-mtapi.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_qa-mtapi.sentineldna.com"
+        set schedule "always"
+        set service "HTTPS" "HTTP"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 135
+        set name "datatransfer.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_datatransfer.sentineldna.com"
+        set schedule "always"
+        set service "HTTP" "HTTPS"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 182
+        set name "qa-datatransfer.sentineldna.com"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_qa-datatransfer.sentineldna.com"
+        set schedule "always"
+        set service "TCP-8000" "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set waf-profile "default"
+    next
+    edit 137
+        set name "scottsdale.sentrak.org"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "ScottsdaleFTP-Access"
+        set dstaddr "VIP_scottsdale.sentrak.org"
+        set schedule "always"
+        set service "FTP" "TCP-989-990" "TCP-50900-50999"
+    next
+    edit 206
+        set name "dev-victimapp-onpremise-coordinator"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "dev-victimapp-onpremise-coordinator.sentineldna.com:9200"
+        set schedule "always"
+        set service "victimapp-coordinator"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 207
+        set name "qa-victimapp-onpremise-coordinator"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "qa-victimapp-onpremise-coordinator.sentineldna.com:9200"
+        set schedule "always"
+        set service "victimapp-coordinator"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 208
+        set name "prod-victimapp-onpremise-coordinato"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "prod-victimapp-onpremise-coordinator.sentineldna.com:9200"
+        set schedule "always"
+        set service "victimapp-coordinator"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 179
+        set name "Management-to-DCs"
+        set srcintf "Management-70"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "IRV-SNT-RDS1"
+        set dstaddr "Domain Controllers"
+        set schedule "always"
+        set service "Management-Tools"
+        set inspection-mode proxy
+    next
+    edit 295
+        set name "Management-to-Vault"
+        set srcintf "Management-70"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "IRV-SNT-RDS1"
+        set dstaddr "IRV-VAULT1" "IRV-VAULT2"
+        set schedule "always"
+        set service "TCP-8200"
+        set inspection-mode proxy
+    next
+    edit 180
+        set name "DCs-to-Management"
+        set srcintf "VLAN-14"
+        set dstintf "Management-70"
+        set action accept
+        set srcaddr "Domain Controllers" "ITOPS_ADMINS"
+        set dstaddr "IRV-SNT-RDS1"
+        set schedule "always"
+        set service "Management-Tools" "RDP" "PING" "TRACEROUTE"
+        set inspection-mode proxy
+    next
+    edit 293
+        set srcintf "Inside-VPN-177"
+        set dstintf "Management-70"
+        set action accept
+        set srcaddr "WG-ITOps"
+        set dstaddr "IRV-SNT-RDS1"
+        set schedule "always"
+        set service "Management-Tools" "RDP"
+        set inspection-mode proxy
+    next
+    edit 294
+        set srcintf "Management-70"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "IRV-SNT-RDS1"
+        set dstaddr "WG-ITOps"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+        set inspection-mode proxy
+    next
+    edit 147
+        set name "PHX_to_Portal"
+        set srcintf "To-PHX-FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "PHX-192.168.149.0"
+        set dstaddr "Portal"
+        set schedule "always"
+        set service "PING" "Portal_TCP-52999"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 163
+        set name "SCG_to_Portal"
+        set srcintf "To-SCG"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "SCG-10.32.1.0/24"
+        set dstaddr "Portal"
+        set schedule "always"
+        set service "PING" "Portal_TCP-52999"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 139
+        set srcintf "HOU"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "HOU_192.168.150.0/24"
+        set dstaddr "Portal"
+        set schedule "always"
+        set service "PING" "Portal_TCP-52999"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 150
+        set name "PHX_to_RADIUS"
+        set srcintf "To-PHX-FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "PHX-192.168.149.0"
+        set dstaddr "IRV-SNT-DC5"
+        set schedule "always"
+        set service "RADIUS-2812"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 164
+        set name "SCG_to_RADIUS"
+        set srcintf "To-SCG"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "SCG-10.32.1.0/24"
+        set dstaddr "IRV-SNT-DC5"
+        set schedule "always"
+        set service "RADIUS-2812"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 141
+        set srcintf "HOU"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "HOU_192.168.150.0/24"
+        set dstaddr "IRV-SNT-DC5"
+        set schedule "always"
+        set service "RADIUS-2812" "PING" "TRACEROUTE"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 270
+        set srcintf "VLAN-14"
+        set dstintf "HOU"
+        set action accept
+        set srcaddr "IRV-SNT-DC5"
+        set dstaddr "HOU_192.168.150.0/24"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 148
+        set name "Portal_to_PHX"
+        set srcintf "VLAN-14"
+        set dstintf "To-PHX-FW1"
+        set action accept
+        set srcaddr "Portal"
+        set dstaddr "PHX-192.168.149.0"
+        set schedule "always"
+        set service "PING"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 169
+        set name "Portal_to_SCG"
+        set srcintf "VLAN-14"
+        set dstintf "To-SCG"
+        set action accept
+        set srcaddr "Portal"
+        set dstaddr "SCG-10.32.1.0/24"
+        set schedule "always"
+        set service "PING"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 160
+        set srcintf "VLAN-14"
+        set dstintf "HOU"
+        set action accept
+        set srcaddr "Portal"
+        set dstaddr "HOU_192.168.150.0/24"
+        set schedule "always"
+        set service "PING"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 149
+        set name "ITOPS_to_PHX"
+        set srcintf "VLAN-14"
+        set dstintf "To-PHX-FW1"
+        set action accept
+        set srcaddr "ITOPS_ADMINS"
+        set dstaddr "PHX-192.168.149.0"
+        set schedule "always"
+        set service "PING" "HTTP" "HTTPS" "RDP"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 170
+        set name "ITOPS_to_SCG"
+        set srcintf "VLAN-14"
+        set dstintf "To-SCG"
+        set action accept
+        set srcaddr "ITOPS_ADMINS"
+        set dstaddr "SCG-10.32.1.0/24"
+        set schedule "always"
+        set service "PING" "HTTP" "HTTPS" "RDP"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 161
+        set srcintf "VLAN-14"
+        set dstintf "HOU"
+        set action accept
+        set srcaddr "ITOPS_ADMINS"
+        set dstaddr "HOU_192.168.150.0/24"
+        set schedule "always"
+        set service "ALL"
+        set ssl-ssh-profile "cert-inspect-none"
+    next
+    edit 151
+        set name "Zabbix-to-PHX-FW1"
+        set srcintf "VLAN-14"
+        set dstintf "To-PHX-FW1"
+        set action accept
+        set srcaddr "IRV-ZABBIX"
+        set dstaddr "PHX-192.168.149.0"
+        set schedule "always"
+        set service "PING" "SNMP"
+    next
+    edit 171
+        set name "Zabbix-to-SCG-FW1"
+        set srcintf "VLAN-14"
+        set dstintf "To-SCG"
+        set action accept
+        set srcaddr "IRV-ZABBIX"
+        set dstaddr "SCG-10.32.1.0/24"
+        set schedule "always"
+        set service "PING" "SNMP"
+    next
+    edit 162
+        set srcintf "VLAN-14"
+        set dstintf "HOU"
+        set action accept
+        set srcaddr "IRV-ZABBIX"
+        set dstaddr "HOU_192.168.150.0/24"
+        set schedule "always"
+        set service "PING" "SNMP" "TRACEROUTE"
+    next
+    edit 165
+        set name "DC1_Jenkins_LDAP"
+        set srcintf "dna-cloud1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "AWS_Jenkins"
+        set dstaddr "IRV-SNT-DC5"
+        set schedule "always"
+        set service "SENTINEL_Duo_LDAP" "SENTINEL_Duo_LDAPS" "LDAP" "LDAP_UDP" "AD_GlobalCatalog"
+    next
+    edit 152
+        set name "DC1_Jenkins"
+        set srcintf "dna-cloud1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "AWS_Jenkins"
+        set dstaddr "git01" "Jenkins_Prod_Targets" "Jenkins_Dev_Targets" "Jenkins_QA_Targets"
+        set schedule "always"
+        set service "HTTP" "SSH" "RDP"
+    next
+    edit 188
+        set name "DC1_QA-DNA-RDP"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud1"
+        set action accept
+        set srcaddr "HCK-SKOF1"
+        set dstaddr "QA-DNA-Website"
+        set schedule "always"
+        set service "RDP"
+    next
+    edit 183
+        set name "DC1_QA-DNA-Website"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud1"
+        set action accept
+        set srcaddr "DEV4-Frank-10.100.6.253"
+        set dstaddr "QA-DNA-Website"
+        set schedule "always"
+        set service "HTTP" "HTTPS"
+    next
+    edit 189
+        set name "DC2_QA-DNA-RDP"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud2"
+        set action accept
+        set srcaddr "HCK-SKOF1"
+        set dstaddr "QA-DNA-Website"
+        set schedule "always"
+        set service "RDP"
+    next
+    edit 184
+        set name "DC2_QA-DNA-Website"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud2"
+        set action accept
+        set srcaddr "DEV4-Frank-10.100.6.253"
+        set dstaddr "QA-DNA-Website"
+        set schedule "always"
+        set service "HTTP" "HTTPS"
+    next
+    edit 166
+        set name "DC2_Jenkins_LDAP"
+        set srcintf "dna-cloud2"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "AWS_Jenkins"
+        set dstaddr "IRV-SNT-DC5"
+        set schedule "always"
+        set service "SENTINEL_Duo_LDAP" "SENTINEL_Duo_LDAPS" "LDAP" "LDAP_UDP" "AD_GlobalCatalog"
+    next
+    edit 125
+        set name "DC1_STG-DB1_SQL"
+        set srcintf "dna-cloud1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "QA1-Privatesubnet-2b" "QA1-Privatesubnet-2c"
+        set dstaddr "IRV-STG-DB1"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 155
+        set name "DC2_Jenkins"
+        set srcintf "dna-cloud2"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "AWS_Jenkins"
+        set dstaddr "git01" "Jenkins_Prod_Targets" "Jenkins_Dev_Targets" "Jenkins_QA_Targets"
+        set schedule "always"
+        set service "HTTP" "SSH" "RDP"
+    next
+    edit 130
+        set name "DC2_STG-DB1_SQL"
+        set srcintf "dna-cloud2"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "QA1-Privatesubnet-2b" "QA1-Privatesubnet-2c"
+        set dstaddr "IRV-STG-DB1"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 167
+        set name "DC2_PING_AWS-to-SOS"
+        set srcintf "dna-cloud2"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+    next
+    edit 168
+        set name "DC1_PING_AWS-to-SOS"
+        set srcintf "dna-cloud1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+    next
+    edit 173
+        set name "DC1_DNS_AWS-to-SOS"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud1"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "DNA-Cloud_172.30/16"
+        set schedule "always"
+        set service "DNS"
+        set logtraffic all
+    next
+    edit 174
+        set name "DC2_DNS_AWS-to-SOS"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud2"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "DNA-Cloud_172.30/16"
+        set schedule "always"
+        set service "DNS"
+    next
+    edit 153
+        set name "DC1-DNA-Cloud1-Full"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud1"
+        set action accept
+        set srcaddr "DEV8" "HCK-SKOF1" "SUBIN-M92" "JOHNG-DT"
+        set dstaddr "DNA-Cloud_172.30/16"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 191
+        set name "DC1_172.30.1.0-HTTPS"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud1"
+        set action accept
+        set srcaddr "JenkinsAccess"
+        set dstaddr "AWS_Jenkins_Network"
+        set schedule "always"
+        set service "HTTPS"
+    next
+    edit 239
+        set srcintf "Inside-VPN-177"
+        set dstintf "dna-cloud1"
+        set action accept
+        set srcaddr "WG-SoftDev"
+        set dstaddr "AWS_Jenkins_Network"
+        set schedule "always"
+        set service "HTTPS" "PING" "TRACEROUTE"
+        set logtraffic all
+    next
+    edit 253
+        set srcintf "Inside-VPN-177"
+        set dstintf "dna-cloud2"
+        set action accept
+        set srcaddr "WG-SoftDev"
+        set dstaddr "AWS_Jenkins_Network"
+        set schedule "always"
+        set service "HTTPS" "PING" "TRACEROUTE"
+        set logtraffic all
+    next
+    edit 199
+        set name "DC1_172.30.1.0-HTTPS_Servers"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud1"
+        set action accept
+        set srcaddr "On-Prem_JenkinsTargets"
+        set dstaddr "AWS_Jenkins_Network"
+        set schedule "always"
+        set service "HTTPS" "Jenkins-45000"
+    next
+    edit 200
+        set name "DC2_172.30.1.0-HTTPS_Servers"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud2"
+        set action accept
+        set srcaddr "On-Prem_JenkinsTargets"
+        set dstaddr "AWS_Jenkins_Network"
+        set schedule "always"
+        set service "HTTPS" "Jenkins-45000"
+    next
+    edit 156
+        set name "DC2-DNA-Cloud2-Full"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud2"
+        set action accept
+        set srcaddr "DEV8" "HCK-SKOF1" "SUBIN-M92" "JOHNG-DT"
+        set dstaddr "DNA-Cloud_172.30/16"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 190
+        set name "DC2_172.30.1.0-HTTPS"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud2"
+        set action accept
+        set srcaddr "JenkinsAccess"
+        set dstaddr "AWS_Jenkins_Network"
+        set schedule "always"
+        set service "HTTPS"
+    next
+    edit 154
+        set name "DC1-Git-to-DNA-Cloud1"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud1"
+        set action accept
+        set srcaddr "git01"
+        set dstaddr "DNA-Cloud_172.30/16"
+        set schedule "always"
+        set service "HTTP" "TCP-8080" "HTTPS"
+    next
+    edit 131
+        set name "DC1_PING_SOS-to-AWS"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud1"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "DNA-Cloud_172.30/16"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+    next
+    edit 157
+        set name "DC2-Git-to-DNA-Cloud2"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud2"
+        set action accept
+        set srcaddr "git01"
+        set dstaddr "DNA-Cloud_172.30/16"
+        set schedule "always"
+        set service "HTTP" "TCP-8080" "HTTPS"
+    next
+    edit 134
+        set name "DC2_PING_SOS-to-AWS"
+        set srcintf "VLAN-14"
+        set dstintf "dna-cloud2"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+    next
+    edit 185
+        set name "vpn_Mechdyne_local"
+        set srcintf "Management-70"
+        set dstintf "Mechdyne"
+        set action accept
+        set srcaddr "Mechdyne_local"
+        set dstaddr "Mechdyne_remote"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: Mechdyne (Created by VPN wizard)"
+    next
+    edit 186
+        set name "vpn_Mechdyne_remote"
+        set srcintf "Mechdyne"
+        set dstintf "Management-70"
+        set action accept
+        set srcaddr "Mechdyne_remote"
+        set dstaddr "Mechdyne_local"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: Mechdyne (Created by VPN wizard)"
+    next
+    edit 194
+        set name "vpn_IRV-to-SIM_local_0"
+        set srcintf "VLAN-14"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "IRV-to-SIM_local"
+        set dstaddr "IRV-to-SIM_remote"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: IRV-to-SIM (Created by VPN wizard)"
+    next
+    edit 195
+        set name "vpn_IRV-to-SIM_remote_0"
+        set srcintf "IRV-to-SIM"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "IRV-to-SIM_remote"
+        set dstaddr "IRV-to-SIM_local"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: IRV-to-SIM (Created by VPN wizard)"
+    next
+    edit 218
+        set name "WG-GeneralAccess"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "Portal" "vault1" "vault2" "HomeInventory"
+        set schedule "always"
+        set service "PING" "Portal_TCP-52999" "TCP-8200" "HTTP" "HTTPS"
+        set logtraffic all
+    next
+    edit 214
+        set name "WG-IT"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-ITOps"
+        set dstaddr "10.0.0.0/8" "192.168.0.0/16"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 243
+        set srcintf "Inside-VPN-177"
+        set dstintf "HOU"
+        set action accept
+        set srcaddr "WG-ITOps"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 224
+        set name "WG-FileShares"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-Accounting" "WG-DNA-FullAccess" "WG-Sales"
+        set dstaddr "DAL-FILE1" "IRV-FILE1" "SNT-IRV-STORE" "IRV-FILE2" "snt-irv-itstore"
+        set schedule "always"
+        set service "HTTP" "PING" "SMB" "TRACEROUTE"
+        set logtraffic all
+    next
+    edit 226
+        set name "WG-Full-HTTP_HTTPS"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-Sales"
+        set dstaddr "10.10.20.0/24"
+        set schedule "always"
+        set service "HTTP" "HTTPS"
+    next
+    edit 217
+        set name "WG_Any-to-10.10.20.0/24 HTTP"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "10.10.20.0/24"
+        set schedule "always"
+        set service "HTTP" "HTTPS"
+    next
+    edit 230
+        set name "WG-DNS"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "IRV-SEMS-DC3" "IRV-SNT-DC5"
+        set schedule "always"
+        set service "DNS" "Windows AD"
+    next
+    edit 229
+        set name "WG-Coxwinapp002-FileShares"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-Accounting" "WG-Sales"
+        set dstaddr "COXWINAPP002-10.1.1.6"
+        set schedule "always"
+        set service "SMB" "PING" "TRACEROUTE" "SAMBA"
+    next
+    edit 223
+        set name "WG-Philip-172.18.22.7"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-PhilipKaldas"
+        set dstaddr "HCK-FIN-DT05-Philip-10.1.1.11"
+        set schedule "always"
+        set service "RDP" "PING"
+    next
+    edit 248
+        set name "WG-DNA-FulAccess"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-DNA-FullAccess"
+        set dstaddr "DNA-Apps" "DNA-Databases"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 193
+        set name "WG-DBA"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-JohnCamp" "WG-RayBican"
+        set dstaddr "DNA-Databases" "IRV-ZABBIX" "DAL-FILE1" "IRV-BILLING2"
+        set schedule "always"
+        set service "RDP" "HTTP" "HTTPS" "MS-SQL" "PING" "SMB" "TRACEROUTE" "Postgres"
+    next
+    edit 249
+        set name "WG-DNA-SQL"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-DNA-SQL"
+        set dstaddr "DNA-Databases"
+        set schedule "always"
+        set service "MS-SQL" "PING" "TRACEROUTE" "SQL03-SQLEXPRESS" "Postgres"
+    next
+    edit 235
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-DaveHan"
+        set dstaddr "DEV-DHAN"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 209
+        set name "WG-JimKillian"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-JimKillian"
+        set dstaddr "DEV-JKILLIAN"
+        set schedule "always"
+        set service "RDP"
+    next
+    edit 216
+        set name "WG-SoftDev-General"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-SoftDev"
+        set dstaddr "PROD_internal_DNA_Webservers" "QA_internal_DNA_Webservers" "DEV_internal_DNA_Webservers" "git01" "IRV-DNA-REDIS1"
+        set schedule "always"
+        set service "HTTP" "HTTPS" "PING" "TRACEROUTE" "TCP-8081" "TCP-6379" "TCP-8002" "TCP-8001" "TCP-8005" "TCP-8015"
+    next
+    edit 198
+        set name "WG-SoftDev-FileShares"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-SoftDev"
+        set dstaddr "IRV-FILE1"
+        set schedule "always"
+        set service "SAMBA" "SMB"
+    next
+    edit 232
+        set name "WG-MCAPPS"
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-MCAPPS-172.18.25.0"
+        set dstaddr "IRV-DNA-WEB1-10.100.2.60" "IRVDOMDB001"
+        set schedule "always"
+        set service "HTTP" "HTTPS"
+    next
+    edit 251
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-MCAPPS-172.18.25.0"
+        set dstaddr "MFG19"
+        set schedule "always"
+        set service "RDP"
+        set comments " (Copy of WG-MCAPPS)"
+    next
+    edit 219
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-MCAPPS-172.18.25.0"
+        set dstaddr "VANQUISH"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 279
+        set srcintf "Inside-VPN-177"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "WG-MCAPPS-172.18.25.0"
+        set dstaddr "SEMS-DomainControllers"
+        set schedule "always"
+        set service "HTTPS" "AD_GlobalCatalog" "DCE-RPC" "DNS" "KERBEROS" "LDAP" "LDAP_UDP" "NTP" "SMB"
+    next
+    edit 204
+        set srcintf "VLAN-14"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+    next
+    edit 215
+        set name "PROD_to_WG"
+        set srcintf "VLAN-14"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "10.100.0.0/16" "10.140.4.0/22" "10.10.20.0/24" "VANQUISH"
+        set dstaddr "WG-ITOps" "10.10.177.0/24" "WG-SoftDev"
+        set schedule "always"
+        set service "TCP-8080"
+    next
+    edit 242
+        set name "WG-IT-to-SIM"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-ITOps"
+        set dstaddr "IRV-to-SIM_remote"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 244
+        set name "IRV-to-ALD_Outgoing"
+        set srcintf "VLAN-14"
+        set dstintf "IRV-to-ALD"
+        set action accept
+        set srcaddr "IRV-to-ALD_local"
+        set dstaddr "IRV-to-ALD_remote"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: IRV-to-ALD (Created by VPN wizard)"
+    next
+    edit 245
+        set name "ALD_HomeInventory"
+        set srcintf "IRV-to-ALD"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "IRV-to-ALD_remote"
+        set dstaddr "inventory.patrolsuite.com" "security.patrolsuite.com"
+        set schedule "always"
+        set service "HTTP" "HTTPS" "PING"
+    next
+    edit 246
+        set name "ALD-FileAccess"
+        set srcintf "IRV-to-ALD"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "IRV-to-ALD_remote"
+        set dstaddr "IRV-FILE1"
+        set schedule "always"
+        set service "HTTP" "HTTPS" "PING" "SMB"
+    next
+    edit 247
+        set name "ALD-DNS"
+        set srcintf "IRV-to-ALD"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "IRV-to-ALD_remote"
+        set dstaddr "IRV-SEMS-DC3" "IRV-SNT-DC5" "IRV-SEMS-DC201"
+        set schedule "always"
+        set service "PING" "DNS"
+    next
+    edit 236
+        set name "vpn_iLAND-DAL_local_0"
+        set srcintf "VLAN-14"
+        set dstintf "iLAND-DAL"
+        set action accept
+        set srcaddr "iLAND-DAL_local"
+        set dstaddr "iLAND-DAL_remote"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: iLAND-DAL (Created by VPN wizard)"
+    next
+    edit 238
+        set name "vpn_iLAND-DAL_remote_0"
+        set srcintf "iLAND-DAL"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "iLAND-DAL_remote"
+        set dstaddr "iLAND-DAL_local"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: iLAND-DAL (Created by VPN wizard)"
+    next
+    edit 292
+        set srcintf "Inside-VPN-177"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "WG-ITOps" "WG-SoftDev" "WG-MCAPPS-172.18.25.0"
+        set dstaddr "OCI-Ashburn-10.30.0.0" "OCI-Ashburn-10.20.0.0" "OCI-172.27.0.0/16" "OCI-172.31.0.0/16"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 240
+        set srcintf "Inside-VPN-177"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "WG-ITOps"
+        set dstaddr "vpn0" "it-operations-oci"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 305
+        set srcintf "Inside-VPN-177"
+        set dstintf "OCI-PHX-DR-B1"
+        set action accept
+        set srcaddr "WG-SoftDev" "WG-ITOps"
+        set dstaddr "OCI-D-DR-VCNs"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 306
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "OCI-D-DR-VCNs"
+        set dstaddr "WG-SoftDev"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+    next
+    edit 202
+        set name "OCI-DNA-PROD-to-WG-A1"
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "OCI-D-PD-VCNs"
+        set dstaddr "WG-SoftDev"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+    next
+    edit 252
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "OCI-DNA-DEV"
+        set dstaddr "WG-SoftDev"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+    next
+    edit 260
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-D-PD-SQL" "OCI-FP-Prod-App"
+        set dstaddr "DNA-SQL-INT-API"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 298
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-DNA-DEV" "OCI-lshdsyspdutl01"
+        set dstaddr "DNA-Main-Databases" "DNA-Dev-DB"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 237
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-pd-ext-web01"
+        set dstaddr "DNA-SQL-EXT-WEB"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 257
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI_dnaqawinweb01" "OCI_dnaqawebapp3" "OCI_dnaqawebapp4"
+        set dstaddr "IRV-DNA-CHDB2" "IRV-DNA-CHDB4"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 264
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-pd-int-dna01"
+        set dstaddr "IRV-DNA-CHDB2" "IRVDOMDB001" "IRV-DNA-CHDB4"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 300
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-lshdsyspdutl01"
+        set dstaddr "IRV-DNA-REDIS1"
+        set schedule "always"
+        set service "TCP-6379"
+    next
+    edit 241
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "A.MX"
+        set schedule "always"
+        set service "SMTP" "SMTPS"
+    next
+    edit 220
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-D-QA-SQL" "OCI-d-pd-ext-api01"
+        set dstaddr "DAL-DNA-DB2"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 288
+        set srcintf "Inside-VPN-177"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "WG-ITOps" "WG-SoftDev"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 262
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-pd-int-fp01"
+        set dstaddr "DAL-DNA-DB2" "IRV-DNA-CHDB2" "IRV-DNA-CHDB4"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 255
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI_dnaqawinweb01"
+        set dstaddr "DAL-DNA-SSRS1.snt.hq"
+        set schedule "always"
+        set service "HTTP"
+    next
+    edit 228
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-SYN-10.20.4.112/28"
+        set dstaddr "irv-dna-api1"
+        set schedule "always"
+        set service "TCP-8005"
+    next
+    edit 281
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-SYN-10.20.4.128/28"
+        set dstaddr "irv-dna-api1"
+        set schedule "always"
+        set service "TCP-8015"
+    next
+    edit 231
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-pd-ext-web01" "OCI_dnaqawinweb01"
+        set dstaddr "IRV-DNA-BART1"
+        set schedule "always"
+        set service "HTTP"
+    next
+    edit 192
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-lshdsyspdutl01"
+        set dstaddr "irv-zbxproxy1"
+        set schedule "always"
+        set service "Zabbix"
+    next
+    edit 291
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-D-PD-SQL"
+        set dstaddr "VANQUISH"
+        set schedule "always"
+        set service "MS-SQL"
+        set logtraffic all
+    next
+    edit 172
+        set srcintf "VLAN-14"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "OCI-Ashburn-10.20.0.0" "OCI-172.31.0.0/16" "OCI-Ashburn-10.30.0.0" "OCI-172.27.0.0/16"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 205
+        set srcintf "VLAN-14"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "OCI-D-PD-VCNs" "OCI-D-QA-SQL"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 256
+        set srcintf "VLAN-14"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "DNA-to-OCI-SQL"
+        set dstaddr "OCI-D-QA-SQL" "OCI-D-PD-SQL"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 287
+        set srcintf "VLAN-14"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "qa-mt-api1" "qa-mt-api2"
+        set dstaddr "OCI-D-QA-SQL"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 254
+        set srcintf "VLAN-14"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "IRV-DNA-WEB1-10.100.2.60" "IRV-DNA-BART1"
+        set dstaddr "OCI_dnaqawinweb01" "OCI-d-pd-ext-web01"
+        set schedule "always"
+        set service "SMB"
+    next
+    edit 286
+        set srcintf "VLAN-14"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "IRV-DNA-WEB1-10.100.2.60"
+        set dstaddr "OCI-d-pd-int-rsdb01"
+        set schedule "always"
+        set service "TCP-6379"
+    next
+    edit 283
+        set srcintf "VLAN-14"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "IRV-STG-DB1"
+        set dstaddr "lsynnwnpdgeo01"
+        set schedule "always"
+        set service "Geoaddress"
+    next
+    edit 268
+        set srcintf "VLAN-14"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "CVS" "IRV-ZABBIX"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 269
+        set srcintf "VLAN-14"
+        set dstintf "OCI-PHX-DR-B1"
+        set action accept
+        set srcaddr "CVS"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 176
+        set name "In-OCI-PING"
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-D-PD-VCNs" "OCI-DNA-DEV" "OCI-Ashburn-10.30.0.0"
+        set dstaddr "all"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+        set logtraffic all
+    next
+    edit 271
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "IRV-AW-Sensor"
+        set schedule "always"
+        set service "PING" "TRACEROUTE" "SYSLOG"
+    next
+    edit 275
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "IRV-AW-Sensor"
+        set schedule "always"
+        set service "PING" "TRACEROUTE" "SYSLOG"
+    next
+    edit 296
+        set name "ITOps-to-LiveEdge"
+        set srcintf "Inside-VPN-177"
+        set dstintf "DRLE-IRV"
+        set action accept
+        set srcaddr "WG-DRLE" "WG-ITOps"
+        set dstaddr "iLand-10.11.0.0/16"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 297
+        set name "LiveEdge-to-ITOps"
+        set srcintf "DRLE-IRV"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "iLand-10.11.0.0/16"
+        set dstaddr "WG-DRLE" "WG-ITOps"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+    next
+    edit 274
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-dr-ext-web01"
+        set dstaddr "DNA-SQL-EXT-WEB"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 276
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-dr-ext-api01"
+        set dstaddr "DAL-DNA-DB2"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 278
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-dr-int-api01" "OCI-D-DR-SQL"
+        set dstaddr "DNA-SQL-INT-API"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 280
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-D-DR-SQL"
+        set dstaddr "VANQUISH"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 303
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-dr-int-fp01"
+        set dstaddr "DAL-DNA-DB2" "IRV-DNA-CHDB2" "IRV-DNA-CHDB4"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 304
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-dr-int-dna01"
+        set dstaddr "IRV-DNA-CHDB2" "IRVDOMDB001" "IRV-DNA-CHDB4"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 307
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-D-DR-SQL"
+        set dstaddr "IRV-DNA-BART1"
+        set schedule "always"
+        set service "HTTP"
+    next
+    edit 308
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-d-dr-ext-web01" "OCI-d-dr-int-dna01"
+        set dstaddr "A.MX"
+        set schedule "always"
+        set service "SMTP"
+    next
+    edit 312
+        set srcintf "VLAN-14"
+        set dstintf "OCI-PHX-DR-B1"
+        set action accept
+        set srcaddr "DNA-to-OCI-SQL"
+        set dstaddr "OCI-D-DR-SQL"
+        set schedule "always"
+        set service "MS-SQL"
+    next
+    edit 273
+        set srcintf "VLAN-14"
+        set dstintf "OCI-PHX-DR-B1"
+        set action accept
+        set srcaddr "IRV-DNA-WEB1-10.100.2.60"
+        set dstaddr "OCI-d-dr-int-rsdb01"
+        set schedule "always"
+        set service "TCP-6379"
+    next
+    edit 277
+        set srcintf "VLAN-14"
+        set dstintf "OCI-PHX-DR-B1"
+        set action accept
+        set srcaddr "IRV-DNA-WEB1-10.100.2.60" "IRV-DNA-BART1"
+        set dstaddr "OCI-d-dr-ext-web01"
+        set schedule "always"
+        set service "SMB"
+    next
+    edit 313
+        set srcintf "VLAN-14"
+        set dstintf "OCI-PHX-DR-B1"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "OCI-D-DR-VCNs"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+        set logtraffic all
+    next
+    edit 314
+        set srcintf "OCI-PHX-DR-B1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "OCI-D-DR-VCNs"
+        set dstaddr "all"
+        set schedule "always"
+        set service "PING" "TRACEROUTE"
+        set logtraffic all
+    next
+    edit 40
+        set name "LE_generic"
+        set srcintf "ATT-IR2FW1"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "VIP_sp.sentrak.us.com" "VIP_v3.sentrak.com" "VIP_LE_scottsdale.sentrak.org" "VIP_LE_dev-services" "VIP_LE_prod-services" "VIP_LE_qa-services" "VIP_A.MX_NAT_PERMANENT" "VIP_B.MX_NAT_PERMANENT" "VIP_focalpoint.sentineldna.com"
+        set schedule "always"
+        set service "HTTP"
+        set utm-status enable
+        set inspection-mode proxy
+        set ssl-ssh-profile "cert-inspect-none"
+        set logtraffic all
+    next
+    edit 259
+        set srcintf "Inside-VPN-177"
+        set dstintf "HOL"
+        set action accept
+        set srcaddr "HOL_local"
+        set dstaddr "HOL_remote"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 284
+        set name "WG-Martika-172.18.22.117"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-MartikaMuratalla"
+        set dstaddr "HCK-FIN-DT08-Martika-10.1.1.45"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 233
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-DarrylMartin"
+        set dstaddr "DarrylMartin-Desktop"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 289
+        set name "vpn_TAR_local_0"
+        set srcintf "Inside-VPN-177"
+        set dstintf "TAR"
+        set action accept
+        set srcaddr "TAR_local"
+        set dstaddr "TAR_remote"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: TAR (Created by VPN wizard)"
+    next
+    edit 290
+        set name "vpn_TAR_remote_0"
+        set srcintf "TAR"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "TAR_remote"
+        set dstaddr "TAR_local"
+        set schedule "always"
+        set service "ALL"
+        set comments "VPN: TAR (Created by VPN wizard)"
+    next
+    edit 267
+        set srcintf "IRV-to-SIM"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "SIM-ITOPS-10.2.5.0/24"
+        set dstaddr "10.10.177.0/24"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 196
+        set name "vpn_NORCO_local_0"
+        set srcintf "VLAN-14"
+        set dstintf "NORCO"
+        set action accept
+        set srcaddr "NORCO_local"
+        set dstaddr "NORCO-10.3.0.0/16"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 201
+        set srcintf "Inside-VPN-177"
+        set dstintf "NORCO"
+        set action accept
+        set srcaddr "WG-ITOps"
+        set dstaddr "NORCO-10.3.0.0/16"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 197
+        set name "vpn_NORCO_remote_0"
+        set srcintf "NORCO"
+        set dstintf "VLAN-14"
+        set action accept
+        set srcaddr "NORCO-10.3.0.0/16"
+        set dstaddr "NORCO_local"
+        set schedule "always"
+        set service "ALL"
+    next
+    edit 212
+        set srcintf "OCI-ASH-PROD-A1"
+        set dstintf "Inside-VPN-177"
+        set action accept
+        set srcaddr "s-np-sso-sm2"
+        set dstaddr "WG-ChamikaraNawarathne" "WG-ChrisMoran"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 221
+        set name "WG-David-172.18.22.186"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-DavidWalters"
+        set dstaddr "HCK-MC-DT11-David-10.1.1.39"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 222
+        set name "WG-Lilian-172.18.22.178"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-LilianArmanyous"
+        set dstaddr "HCK-MC-DT09-Lilian-10.1.1.15"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 225
+        set name "WG-Marcie-172.18.22.176"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-MarcieAvalos"
+        set dstaddr "MARCIE-MarcieAvalos-10.1.1.188"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 250
+        set name "WG-Siriya-172.18.22.177"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-SiriyaBoonthawatchai"
+        set dstaddr "HCK-FIN-DT03-Siriya-10.1.1.149"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 258
+        set name "WG-Marisol-172.18.22.107"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-MarisolGreenberg"
+        set dstaddr "HCK-FIN-DT01-Marisol-10.1.1.215"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 261
+        set name "WG-Chandan-172.18.22.169"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-ChandanKaur"
+        set dstaddr "HCK-FIN-DT04-Chandan-10.1.1.2"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 263
+        set name "WG-Dan-172.18.22.175"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-DanPetrescu"
+        set dstaddr "HCK-FIN-DT06-Dan-10.1.1.10"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 266
+        set name "WG-Sheng-172.18.25.93"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-ShengXiong"
+        set dstaddr "HCK-AST-DT2-Sheng-10.1.1.125"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+    edit 272
+        set srcintf "IRV-to-SIM"
+        set dstintf "OCI-ASH-PROD-A1"
+        set action accept
+        set srcaddr "all"
+        set dstaddr "all"
+        set schedule "always"
+        set service "ALL"
+        set logtraffic all
+    next
+    edit 282
+        set name "WG-Charmaine-172.18.22.53"
+        set srcintf "Inside-VPN-177"
+        set dstintf "IRV-to-SIM"
+        set action accept
+        set srcaddr "WG-CharmaineWatson"
+        set dstaddr "HCK-FIN-DT07-Charmaine-10.1.1.23"
+        set schedule "always"
+        set service "PING" "RDP"
+    next
+end
